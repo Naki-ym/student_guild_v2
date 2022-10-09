@@ -29,16 +29,15 @@
             <li><%= link_to("Chat", "/chats", {class: "header-list-item"}) %></li>
             <li>
               <%= link_to("/users/#{@current_user.id}") do %>
-                <% if @current_user.icon? %>
-                  <%= image_tag @current_user.icon.url, class:"header-usericon" %>
-                <% else %>
-                  <%= image_tag "icon.png", class: "header-usericon" %>
-                <% end %>
+                <%= image_tag "icon.png", class: "header-usericon" %>
               <% end %>
             </li>
           <% else %>
-            <li><%= link_to("Signup", "/signup", {class: "header-list-item"}) %></li>
-            <li><%= link_to("Login", "/login", {class: "header-list-item"}) %></li>
+            <li><%= link_to("Signup", "/users/sign_up", {class: "header-list-item"}) %></li>
+            <li><%= link_to("Login", "/users/sign_in", {class: "header-list-item"}) %></li>
+            <% if user_signed_in? %>
+              <%= link_to "サインアウト", destroy_user_session_path, method: :delete %>
+            <% end %>
           <% end %>
         </ul>
       </nav>
@@ -46,6 +45,17 @@
 
     <% if controller.controller_name != "home" %>
       <div class="under-header"></div>
+    <% end %>
+
+    <% if flash[:notice] %>
+      <div class="alert alert-info">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+    <% if flash[:alert] %>
+      <div class="alert alert-danger">
+        <%= flash[:alert] %>
+      </div>
     <% end %>
 
     <% if flash[:notice] %>
