@@ -1,0 +1,68 @@
+@charset "utf-8";
+@import "_form";
+@import "_postlist";
+@import "_usericon";
+@import "_userlist";
+@import "_variable";
+
+
+.user-box {
+  align-items: center;
+  display: flex;
+  padding: 16px 24px;
+  .user-box-right {
+    flex-grow: 1;
+    text-align: left;
+    h1 {
+      font-size: 32px;
+    }
+    .follow-box {
+      display: flex;
+      margin: 8px 0;
+      a {
+        font-size: 20px;
+        margin-right: 8px;
+      }
+    }
+    .user-box-btnarea {
+      align-items: center;
+      display: flex;
+      justify-content: flex-end;
+      .icon {
+        display: inline;
+        font-size: 24px;
+        margin: 8px;
+        transition: 0.3s ;
+        &:hover {
+          opacity: 0.5;
+        }
+      }
+    }
+  }
+}
+
+.follows_followers_tab {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 24px;
+  a {
+    border-right: 1px solid $main-color;
+    flex: 1;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    &:first-of-type {
+      border: 1px solid $main-color;
+      border-radius: 8px 0 0 8px;
+    }
+    &:last-of-type {
+      border: 1px solid $main-color;
+      border-radius: 0 8px 8px 0;
+    }
+  }
+  .target {
+    background-color: $main-color;
+    * {
+      color: $base-color-10;
+    }
+  }
+}
