@@ -1,0 +1,150 @@
+/*
+ *= require_tree .
+ *= require_self
+ */
+
+@charset "utf-8";
+@import "_reset";
+@import "_variable";
+@import "_table";
+
+* {
+  font-family: "游ゴシック", "Yu Gothic";
+  color: $base-color-100;
+  user-select: none;
+}
+
+body {
+  background-color: $base-color-20;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 12px;
+  background-color: $base-color-90;
+}
+
+.btns {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+.btn {
+  display: block;
+  color: $base-color-100;
+  margin: 8px;
+  padding: 8px;
+  width: fit-content;
+  border: 1px solid $base-color-100;
+  font-size: 20px;
+  background: $btn-main-color;
+  transition: 0.3s ;
+  user-select: none;
+  &:hover {
+    opacity: 1;
+    color: $base-color-10;
+    background: $base-color-100;
+  }
+}
+
+.text-btn {
+  align-items: center;
+  display: flex;
+  font-size: 16px;
+  transition: 0.3s;
+  i {
+    padding-right: 4px;
+  }
+  &:hover {
+    opacity: 0.5;
+  }
+}
+
+.btn-list {
+  background: $base-color-10;
+  box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+  position: relative;
+  padding: 0 20px;
+  margin: 20px;
+  user-select: none;
+  li {
+    line-height: 1.5;
+    padding: 20px;
+    border-bottom: solid 1px $accent-color-line;
+    list-style-type: none!important;
+    font-weight: normal;
+    &:last-of-type{
+      border-bottom: none;
+    }
+    a {
+      display: flex;
+      transition: 0.3s ;
+      line-height: 100%;
+      font-size: 20px;
+      &:hover {
+        opacity: 0.5;
+      }
+      i {
+        padding-right: 20px;
+      }
+    }
+  }
+}
+
+.page-top-btns {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  .page-back {
+    display: flex;
+    font-size: 20px;
+    transition: 0.3s;
+    i {
+      margin-right: 8px;
+    }
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+  .page-forward {
+    display: flex;
+    font-size: 20px;
+    transition: 0.3s;
+    i {
+      margin-left: 8px;
+    }
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+}
+
+img {
+  width: 100%;
+}
+
+.wrapper {
+  width: 50%;
+  max-width: 1190px;
+  margin: 0 auto 0;
+  text-align: center; 
+}
+
+.under-header {
+  height: 76px;
+}
+
+.redtext * {
+  color: $accent-color-danger;
+}
+
+@import "_header";
+@import "_message";
+@import "_modalmenu";

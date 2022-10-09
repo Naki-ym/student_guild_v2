@@ -1,3 +1,85 @@
-// Place all the styles related to the home controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+@charset "utf-8";
+@import "_variable";
+@import "_bgextendlr";
+
+.fixed-box-wrapper{
+  position: relative;
+  z-index: 1;
+  .fixed-box{
+    position: -webkit-sticky;/*Safari*/
+    position: sticky;
+    height: 100vh;
+    top: 0;
+    font-size: 100px;
+    background-color: $base-color-10;
+    color: $base-color-100;
+    margin-bottom: 200px;
+    &:last-child {
+      margin-bottom: 0px;
+      height: 300px;
+    }
+  }
+  .box1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 48px;
+    .box1-content {
+      display: flex;
+      align-items: center;
+      width: 80%;
+      h1 {
+        vertical-align: middle;
+        z-index: 1;
+        .bgyellow {
+          transition: 0.3s;
+          &:hover {
+            color: $accent-color-createive;
+          }
+        }
+      }
+      img {
+        position: absolute;
+        right: 20px;
+        width: 50%;
+      }
+    }
+  }
+  .box2 {
+    background-color: $base-color-30;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    h1 {
+      color: $base-color-90;
+      line-height: 1.2;
+    }
+  }
+  .box3 {
+    background-color: $base-color-10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+    font-size: 40px;
+    h1 {
+      margin-bottom: 24px;
+      color: $base-color-90;
+    }
+  }
+  .box4{
+    position: relative;
+    z-index: 2;
+    height: 30px;
+    background-color: $base-color-90;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+    font-size: 24px;
+    small {
+      color: $base-color-10;
+    }
+  }
+}

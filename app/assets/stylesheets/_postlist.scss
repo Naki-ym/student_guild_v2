@@ -1,0 +1,62 @@
+@charset "utf-8";
+@import "_variable";
+
+.post-list {
+  padding-top: 10px;
+  .post-box {
+    background: $base-color-10;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    padding: 12px 20px 4px;
+    width: 100%;
+    .post-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 12px;
+      font-size: 20px;
+      .post-user-box {
+        display: flex;
+        align-items: center;
+      }
+      i {
+        font-size: 20px
+      }
+    }
+    .post-content {
+      width: 100%;
+      font-size: 24px;
+      text-align: left;
+      word-wrap: break-word;
+      padding: 8px 16px;
+    }
+    .post-items {
+      display: flex;
+      justify-content: flex-end;
+      user-select: none;
+      .fav-icon {
+        display: flex;
+        font-size: 20px;
+        transition: 0.3s;
+        padding: 12px;
+        &:hover {
+          opacity: 0.5;
+        }
+        i {
+          color: $base-color-100;
+          padding-right: 4px;
+        }
+      }
+      > i {
+        color: $base-color-100;
+        font-size: 20px;
+        transition: 0.3s;
+        padding: 12px;
+        &:hover {
+          opacity: 0.5;
+        }
+      }
+    }
+  }
+}

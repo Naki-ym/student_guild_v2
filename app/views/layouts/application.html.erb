@@ -8,9 +8,61 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Abel&family=Shippori+Mincho&family=Kosugi&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/d5d7b2c04e.js" crossorigin="anonymous"></script>
   </head>
 
   <body>
+    <header>
+      <% if @current_user %>
+        <%= link_to("Student Guild", "/projects", {class: "header-logo"}) %>
+      <% else %>
+        <%= link_to("Student Guild", "/", {class: "header-logo"}) %>
+      <% end %>
+      <nav class="pc-nav">
+        <ul>
+          <% if @current_user %>
+            <li><%= link_to("Project", "/projects", {class: "header-list-item"}) %></li>
+            <li><%= link_to("TimeLine", "/timeline", {class: "header-list-item"}) %></li>
+            <li><%= link_to("Chat", "/chats", {class: "header-list-item"}) %></li>
+            <li>
+              <%= link_to("/users/#{@current_user.id}") do %>
+                <% if @current_user.icon? %>
+                  <%= image_tag @current_user.icon.url, class:"header-usericon" %>
+                <% else %>
+                  <%= image_tag "icon.png", class: "header-usericon" %>
+                <% end %>
+              <% end %>
+            </li>
+          <% else %>
+            <li><%= link_to("Signup", "/signup", {class: "header-list-item"}) %></li>
+            <li><%= link_to("Login", "/login", {class: "header-list-item"}) %></li>
+          <% end %>
+        </ul>
+      </nav>
+    </header>
+
+    <% if controller.controller_name != "home" %>
+      <div class="under-header"></div>
+    <% end %>
+
+    <% if flash[:notice] %>
+      <div class="success-msg">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+    <% if flash[:error_message] %>
+      <div class="error-msg">
+        <%= flash[:error_message] %>
+      </div>
+    <% end %>
+    <% if @error_message %>
+      <div class="error-msg">
+        <%= @error_message %>
+      </div>
+    <% end %>
     <%= yield %>
   </body>
 </html>

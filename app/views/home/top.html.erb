@@ -1,1 +1,33 @@
-aaaaaaaa
+<div class="fixed-box-wrapper">
+  <section class="fixed-box box1">
+    <div class="box1-content">
+      <h1>
+        <span class="bgextend bgLRextendTrigger"><span class="bgappearTrigger">
+          Be <span class="bgyellow">creative</span><br>
+          with your friends.
+        </span></span>
+      </h1>
+      <%= image_tag 'light.png' %>
+    </div>
+  </section>
+  <section class="fixed-box box2">
+    <div>
+      <h1>勉強、部活、行事。<br>
+      やることは沢山ある。<br>
+      でもやりたいこと、作りたいものがある。<br>
+      そんなとき、ここで仲間を探してみよう。</h1>
+    </div>
+  </section>
+  <section class="fixed-box box3">
+    <h1>Let's start!</h1>
+    <div class="btns">
+      <%= button_to "新規登録", "/signup", {method: :get, class: "btn"} %>
+      <%= button_to "ログイン", "/login", {method: :get, class: "btn"} %>
+    </div>
+  </section>
+  <section class="fixed-box box4">
+    <small>&copy; copyright.Naoki.Y</small>
+  </section>
+</div>
+
+<%= javascript_pack_tag 'bgextendlr' %>
