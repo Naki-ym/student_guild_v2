@@ -25,7 +25,7 @@
                     <% end %>
                   </li>
                   <li>
-                    <%= link_to("/posts/#{post.id}",  {class: "redtext"}, method: :delete) do %>
+                    <%= link_to("/posts/#{post.id}", { method: :delete, class: "redtext" }) do %>
                       <i class="far fa-trash-alt"></i>
                       <p>この投稿を削除</p>
                     <% end %>
