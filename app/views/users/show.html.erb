@@ -53,7 +53,7 @@
               <p><%= simple_format(post.content) %></p>
             </div>
           <% end %>
-          <div class="post-items" id="favorite_<%= post.id %>">
+          <div class="post-items" id="like_<%= post.id %>">
             <%= render 'posts/post_items', post: post %>
           </div>
         </div>
