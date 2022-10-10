@@ -1,0 +1,31 @@
+<div class="wrapper">
+  <div class="page-top-btns">
+    <%= link_to("/users/#{@user.id}", class: "page-back") do %>
+      <i class="fas fa-angle-left"></i>
+      <p>戻る</p>
+    <% end %>
+  </div>
+  <div class="follows_followers_tab">
+    <%= link_to("/users/#{@user.id}/follows", class: "target") do %>
+      <p>フォロー <%= @following_users.count %></p>
+    <% end %>
+    <%= link_to("/users/#{@user.id}/followers") do %>
+      <p>フォロワー <%= @follower_users.count %></p>
+    <% end %>
+  </div>
+  <h1>フォローしているユーザー</h1>
+  <div class="user-list">
+    <% if @users.size > 0 %>
+      <% @users.each do |user| %>
+        <div class="user-tile">
+          <%= link_to("/users/#{user.id}") do %>
+            <%= image_tag "icon.png", class: "usericon" %>
+            <p><%= user.name %></p>
+          <% end %>
+        </div>
+      <% end %>
+    <% else %>
+      <p>フォローしているユーザーはいません</p>
+    <% end %>
+  </div>
+</div>

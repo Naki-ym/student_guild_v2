@@ -1,6 +1,9 @@
 <div class="wrapper">
   <section class="user-box">
     <%= image_tag "icon.png", class: "big-usericon" %>
+    <div class="user-box-right">
+      <%= render partial:"relationships/user_box_right", lacals: {user: @user} %>
+    </div>
   </section>
   <div class="post-list">
     <% if @posts.size > 0 %>

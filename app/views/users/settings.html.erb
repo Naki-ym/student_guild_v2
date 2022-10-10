@@ -1,0 +1,25 @@
+<div class="wrapper">
+  <div class="page-top-btns">
+    <%= link_to("/users/#{current_user.id}", class: "page-back") do %>
+      <i class="fas fa-angle-left"></i>
+      <p>戻る</p>
+    <% end %>
+  </div>
+  <h1>設定</h1>
+  <ul class="btn-list">
+    <li>
+      <label>
+        <%= link_to "/users/edit" do %>
+          <i class="fas fa-user-cog"></i>
+          <p>アカウント情報の編集</p>
+        <% end %>
+      </label>
+    </li>
+    <li class="redtext">
+      <%= link_to(destroy_user_session_path, method: :delete) do %>
+        <i class="fas fa-sign-out-alt"></i>
+        <p>ログアウト</p>
+      <% end %>
+    </li>
+  </ul>
+</div>

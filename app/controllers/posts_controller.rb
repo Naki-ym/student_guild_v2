@@ -5,19 +5,18 @@ class PostsController < ApplicationController
 
   def index
     @post  = Post.new
-    # case params[:search]
-    # when nil
-    #   @followings_id = []
-    #   current_user.followings.each do |user|
-    #     @followings_id << user.id
-    #   end
-    #   @posts = Post.kept.where(user_id: @followings_id).order(created_at: :desc)
-    # when "all"
-    #   @posts = Post.kept.order(created_at: :desc)
-    # else
-    #   @posts = Post.kept.order(created_at: :desc)
-    # end
-    @posts = Post.kept.order(created_at: :desc)
+    case params[:search]
+    when nil
+      @followings_id = []
+      current_user.followings.each do |user|
+        @followings_id << user.id
+      end
+      @posts = Post.kept.where(user_id: @followings_id).order(created_at: :desc)
+    when "all"
+      @posts = Post.kept.order(created_at: :desc)
+    else
+      @posts = Post.kept.order(created_at: :desc)
+    end
   end
   
   def create
