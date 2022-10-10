@@ -17,16 +17,16 @@
   <body>
     <header>
       <% if current_user %>
-        <%= link_to("Student Guild", "/projects", {class: "header-logo"}) %>
+        <%= link_to("Student Guild", "#", {class: "header-logo"}) %>
       <% else %>
         <%= link_to("Student Guild", "/", {class: "header-logo"}) %>
       <% end %>
       <nav class="pc-nav">
         <ul>
           <% if current_user %>
-            <li><%= link_to("Project", "/projects", {class: "header-list-item"}) %></li>
-            <li><%= link_to("TimeLine", "/timeline", {class: "header-list-item"}) %></li>
-            <li><%= link_to("Chat", "/chats", {class: "header-list-item"}) %></li>
+            <li><%= link_to("Project", "#", {class: "header-list-item"}) %></li>
+            <li><%= link_to("TimeLine", "/posts", {class: "header-list-item"}) %></li>
+            <li><%= link_to("Chat", "#", {class: "header-list-item"}) %></li>
             <li>
               <%= link_to("/users/#{current_user.id}") do %>
                 <%= image_tag "icon.png", class: "header-usericon" %>
@@ -48,24 +48,13 @@
     <% end %>
 
     <% if flash[:notice] %>
-      <div class="alert alert-info">
-        <%= flash[:notice] %>
-      </div>
-    <% end %>
-    <% if flash[:alert] %>
-      <div class="alert alert-danger">
-        <%= flash[:alert] %>
-      </div>
-    <% end %>
-
-    <% if flash[:notice] %>
       <div class="success-msg">
         <%= flash[:notice] %>
       </div>
     <% end %>
-    <% if flash[:error_message] %>
+    <% if flash[:alert] %>
       <div class="error-msg">
-        <%= flash[:error_message] %>
+        <%= flash[:alert] %>
       </div>
     <% end %>
     <% if @error_message %>
@@ -74,5 +63,7 @@
       </div>
     <% end %>
     <%= yield %>
+
+    <%= javascript_pack_tag 'modalmenu' %>
   </body>
 </html>

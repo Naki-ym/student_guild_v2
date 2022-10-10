@@ -1,17 +1,36 @@
-<div class="wrapper">
-  <section class="user-box">
-    <%= image_tag "icon.png", class: "big-usericon" %>
+<% if @post.errors.full_messages %>
+  <% @post.errors.full_messages.each do |message| %>
+    <div class="error-msg">
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="tl-wrapper">
+  <section class="tl-left">
+    <ul>
+      <li><%= link_to("フォローしているユーザー", "/posts", {class: "menu-list-textbtn"}) %></li>
+      <li><%= link_to("すべてのユーザー", "/posts?search=all", {class: "menu-list-textbtn"}) %></li>
+    </ul>
   </section>
-  <div class="post-list">
-    <% if @posts.size > 0 %>
+  <section class="tl-post-list">
+    <%= form_with model: @post, url: "/posts" do |f| %>
+      <%= f.text_area :content, class: "newpost-text", rows: "2" %>
+      <div class="newpost-items">
+        <%= f.submit "投稿", class: "btn" %>
+      </div>
+    <% end %>
+    <div class="post-list">
       <% @posts.each do |post| %>
         <div class="post-box">
           <div class="post-top">
-            <div class="post-user-box">
-              <%= image_tag "icon.png", class: "usericon" %>
-              <p><%= post.user.name %></p>
-            </div>
-            <a href="" class="md-btn" data-target="modal<%= post.id %>"><i class="fas fa-ellipsis-v"></i></a>
+            <%= link_to("/users/#{post.user.id}") do %>
+              <div class="post-user-box">
+                <%= image_tag "icon.png", class: "usericon" %>
+                <p><%= post.user.name %></p>
+              </div>
+            <% end %>
+            <a href="" class="md-btn" title="メニュー" data-target="modal<%= post.id %>"><i class="fas fa-ellipsis-v"></i></a>
           </div>
           <div id="modal<%= post.id %>" class="modal">
             <div class="md-overlay md-close"></div>
@@ -24,8 +43,8 @@
                       <p>投稿内容の編集</p>
                     <% end %>
                   </li>
-                  <li>
-                    <%= link_to("/posts/#{post.id}",  {class: "redtext"}, method: :delete) do %>
+                  <li class="redtext">
+                    <%= link_to("/posts/#{post.id}", method: :delete) do %>
                       <i class="far fa-trash-alt"></i>
                       <p>この投稿を削除</p>
                     <% end %>
@@ -58,9 +77,8 @@
           </div>
         </div>
       <% end %>
-    </p>
-    <% else %>
-      <p>投稿はまだありません</p>
-    <% end %>
-  </div>
+    </div>
+  </section>
 </div>
+
+<%= javascript_pack_tag 'posts/postform' %>
