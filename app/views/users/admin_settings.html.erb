@@ -1,0 +1,31 @@
+<div class="wrapper">
+  <div class="page-top-btns">
+    <%= link_to("/users/#{current_user.id}", class: "page-back") do %>
+      <i class="fas fa-angle-left"></i>
+      <p>戻る</p>
+    <% end %>
+  </div>
+  <h1>管理メニュー</h1>
+  <ul class="btn-list">
+    <li>
+      <label>
+        <%= link_to "/tags" do %>
+          <i class="fas fa-tags"></i>
+          <p>タグの管理</p>
+        <% end %>
+      </label>
+    </li>
+    <li>
+      <%= link_to "#" do %>
+        <i class="fas fa-users"></i>
+        <p>ユーザーの管理</p>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to "/rails/info/routes" do %>
+        <i class=""></i>
+        <p>URLの管理</p>
+      <% end %>
+    </li>
+  </ul>
+</div>

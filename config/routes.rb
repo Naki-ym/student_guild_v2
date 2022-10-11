@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users, only: [:show] do
     collection do
+      get :admin_settings
       get :settings
     end
     member do
