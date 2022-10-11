@@ -3,6 +3,11 @@ Rails.application.routes.draw do
   resources :posts do
     resource :post_likes, only: [:create, :destroy]
   end
+  resources :tag_categories, only: [:index, :create, :new, :edit, :update, :destroy] do
+    collection do
+      get :sort
+    end
+  end
   devise_for :users
   resources :users, only: [:show] do
     collection do

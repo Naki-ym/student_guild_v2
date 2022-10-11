@@ -1,0 +1,27 @@
+<div class="wrapper">
+  <div class="page-top-btns">
+    <%= link_to("/tags", class: "page-back") do %>
+      <i class="fas fa-angle-left"></i>
+      <p>戻る</p>
+    <% end %>
+  </div>
+  <h1>カテゴリー一覧</h1>
+  <div class="table-top-area">
+    <%= link_to("/tag_categories/new", class: "text-btn") do %>
+      <i class="fas fa-plus"></i>
+      <p>カテゴリー追加</p>
+    <% end %>
+    <div class="sort">
+      <i class="fas fa-sort"></i>
+      <%= select_tag "sort", options_for_select(@sort_list, 1), {
+        data: {
+          remote: true,
+          url: url_for(action: :sort)
+        }
+      }%>
+    </div>
+  </div>
+  <table id="sort-tag-category">
+    <%= render 'tag_categories/tag_category_table', categories: @categories %>
+  </table>
+</div>

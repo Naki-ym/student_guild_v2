@@ -8,12 +8,16 @@
   <h1>管理メニュー</h1>
   <ul class="btn-list">
     <li>
-      <label>
-        <%= link_to "/tags" do %>
-          <i class="fas fa-tags"></i>
-          <p>タグの管理</p>
-        <% end %>
-      </label>
+      <%= link_to "/tags" do %>
+        <i class="fas fa-tags"></i>
+        <p>タグの管理</p>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to "/tag_categories" do %>
+        <i class="fas fa-tags"></i>
+        <p>タグカテゴリーの管理</p>
+      <% end %>
     </li>
     <li>
       <%= link_to "#" do %>
