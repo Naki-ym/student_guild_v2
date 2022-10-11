@@ -3,9 +3,9 @@ class TagCategory < ApplicationRecord
 
   validates :name, {presence: true, uniqueness: true, length: {maximum: 30}}
   
-  # has_many :tags
+  has_many :tags
 
-  # def tags
-  #   return Tag.where(tag_category_id: self.id)
-  # end
+  def tags
+    return Tag.where(tag_category_id: self.id)
+  end
 end

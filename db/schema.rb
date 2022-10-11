@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_11_004941) do
+ActiveRecord::Schema.define(version: 2022_10_11_062653) do
 
   create_table "post_likes", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -48,6 +48,16 @@ ActiveRecord::Schema.define(version: 2022_10_11_004941) do
     t.index ["discarded_at"], name: "index_tag_categories_on_discarded_at"
   end
 
+  create_table "tags", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "tag_category_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "discarded_at"
+    t.index ["discarded_at"], name: "index_tags_on_discarded_at"
+    t.index ["tag_category_id"], name: "index_tags_on_tag_category_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name", default: "", null: false
     t.string "email", default: "", null: false
@@ -67,4 +77,5 @@ ActiveRecord::Schema.define(version: 2022_10_11_004941) do
   add_foreign_key "posts", "users"
   add_foreign_key "relationships", "users", column: "followed_id"
   add_foreign_key "relationships", "users", column: "follower_id"
+  add_foreign_key "tags", "tag_categories"
 end
