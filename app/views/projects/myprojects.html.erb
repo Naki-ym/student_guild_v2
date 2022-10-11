@@ -1,0 +1,39 @@
+<div class="not-scroll">
+  <div class="projects-wrapper">
+    <section class="projects-left">
+      <div class="fixed">
+        <div class="menu">
+          <ul class="menu-list">
+            <li><%= link_to("< 戻る", "/projects") %></li>
+            <li><%= link_to("新規プロジェクト", "/projects/new", {class: "list-btn"}) %></li>
+            <li><%= link_to("すべて", "/projects/myprojects") %></li>
+            <li><%= link_to("公開済み", "/projects/myprojects?is_published=true") %></li>
+            <li><%= link_to("未公開", "/projects/myprojects?is_published=false") %></li> 
+          </ul>
+        </div>
+      </div>
+    </section>
+    <section class="projects-right">
+      <h1>マイプロジェクト</h1>
+      <div class="projects-bord">
+        <% @projects.each do |project| %>
+          <div class="project-box">
+            <%= link_to("/projects/#{project.id}") do %>
+              <%= image_tag "image.png", class: "project-img" %>
+              <div class="project-content">
+                <h2><%= project.name %></h2>
+                <p><%= project.overview %></p>
+                <p>募集対象：<%= project.target %></p>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+        <div class="project-box">
+        </div>
+        <div class="project-box">
+        </div>
+      </div>
+    </section>
+  </div>
+
+</div>

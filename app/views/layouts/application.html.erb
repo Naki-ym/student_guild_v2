@@ -17,14 +17,14 @@
   <body>
     <header>
       <% if current_user %>
-        <%= link_to("Student Guild", "#", {class: "header-logo"}) %>
+        <%= link_to("Student Guild", "/projects", {class: "header-logo"}) %>
       <% else %>
         <%= link_to("Student Guild", "/", {class: "header-logo"}) %>
       <% end %>
       <nav class="pc-nav">
         <ul>
           <% if current_user %>
-            <li><%= link_to("Project", "#", {class: "header-list-item"}) %></li>
+            <li><%= link_to("Project", "/projects", {class: "header-list-item"}) %></li>
             <li><%= link_to("TimeLine", "/posts", {class: "header-list-item"}) %></li>
             <li><%= link_to("Chat", "#", {class: "header-list-item"}) %></li>
             <li>

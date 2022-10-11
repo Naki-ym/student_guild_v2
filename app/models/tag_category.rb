@@ -6,6 +6,6 @@ class TagCategory < ApplicationRecord
   has_many :tags
 
   def tags
-    return Tag.where(tag_category_id: self.id)
+    return Tag.kept.where(tag_category_id: self.id)
   end
 end

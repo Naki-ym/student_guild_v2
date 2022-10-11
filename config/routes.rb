@@ -5,6 +5,17 @@ Rails.application.routes.draw do
     resource :post_likes, only: [:create, :destroy]
   end
 
+  resources :projects do
+    collection do
+      get :myprojects
+      get :dynamic_tag
+    end
+    member do
+      post  :publish
+      post  :unpublish
+    end
+  end
+
   resources :tags, only: [:index, :create, :new, :edit, :update, :destroy] do
     collection do
       get :sort

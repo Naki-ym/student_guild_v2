@@ -1,0 +1,56 @@
+<div class="wrapper">
+  <div class="page-top-btns">
+    <% if @project.user == current_user %>
+      <%= link_to("/projects/myprojects", class: "page-back") do %>
+        <i class="fas fa-angle-left"></i>
+        <p>戻る</p>
+      <% end %>
+    <% else %>
+      <%= link_to("/projects", class: "page-back") do %>
+        <i class="fas fa-angle-left"></i>
+        <p>戻る</p>
+      <% end %>
+    <% end %>
+  </div>
+  <%= image_tag "image.png", class: "project-img" %>
+  <div class="project-show-box">
+    <h2><%= @project.name %></h2>
+    <div class="project-show-data">
+      <% @project.tags.each do |tag| %>
+        <p>タグ：<%= tag.name %></p>
+      <% end %>
+      <p>募集条件：<%= @project.target %></p>
+      <% if @project.user.id != current_user.id %>
+        <p>企画者：<%= @project.user.name %></p>
+      <% else %>
+        <p>
+          公開状況：
+          <% if @project.is_published == true %>
+            公開中
+          <% else %>
+            非公開
+          <% end %>
+        </p>
+      <% end %>
+    </div>
+    <%= simple_format(@project.detail) %>
+    <div class="btns">
+      <% if @project.user.id == current_user.id %>
+        <%= button_to "届いた応募を見る", "/projects/#{@project.id}/entries", {method: :get, class: "btn"} %>
+        <% if @project.is_published == true %>
+          <%= button_to "非公開にする", "/projects/#{@project.id}/unpublish", {class: "btn"} %>
+        <% else %>
+          <%= button_to "公開する", "/projects/#{@project.id}/publish", {class: "btn"} %>
+        <%end%>
+        <%= button_to "編集", "/projects/#{@project.id}/edit", {method: :get, class: "btn"} %>
+        <%= button_to "削除", "/projects/#{@project.id}", {method: :delete, class: "btn"} %>
+      <% else %>
+        <% if @entry %>
+          <h2>応募済み</h2>
+        <% else %>
+          <%= button_to "応募する", "/projects/#{@project.id}/entry", {method: :get, class: "btn"} %>
+        <%end%>
+      <% end %>
+    </div>
+  </div>
+</div>

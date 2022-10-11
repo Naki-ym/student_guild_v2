@@ -1,0 +1,47 @@
+<div class="not-scroll">
+  <div class="projects-wrapper">
+    <section class="projects-left">
+      <div class="fixed">
+        <div class="menu">
+          <ul class="menu-list">
+            <li><%= link_to("マイプロジェクト", "projects/myprojects", {class: "list-btn"}) %></li>
+            <li><%= link_to("すべて", "/projects", {class: "menu-list-textbtn"}) %></li>
+            <% @categories.each do |category| %>
+              <details>
+                <summary><%= category.name %></summary>
+                <ul>
+                  <% category.tags.each do |tag| %>
+                    <li><%= link_to(tag.name, "/projects?tag=#{tag.id}") %></li>
+                  <% end %>
+                </ul>
+              </details>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <section class="projects-right">
+      <% if params[:tag] %>
+        <h1><%= @tag.name %>タグのついたプロジェクト</h1>
+      <% end %>
+      <div class="projects-bord">
+        <% @projects.each do |project| %>
+          <div class="project-box">
+            <%= link_to("/projects/#{project.id}") do %>
+              <%= image_tag "image.png", class: "project-img" %>
+              <div class="project-content">
+                <h2><%= project.name %></h2>
+                <p>募集対象：<%= project.target %></p>
+                <p><%= project.overview %></p>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+        <div class="project-box">
+        </div>
+        <div class="project-box">
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

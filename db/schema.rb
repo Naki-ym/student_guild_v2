@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_11_062653) do
+ActiveRecord::Schema.define(version: 2022_10_11_135306) do
 
   create_table "post_likes", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -29,6 +29,29 @@ ActiveRecord::Schema.define(version: 2022_10_11_062653) do
     t.datetime "discarded_at"
     t.index ["discarded_at"], name: "index_posts_on_discarded_at"
     t.index ["user_id"], name: "index_posts_on_user_id"
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "name", null: false
+    t.string "overview", null: false
+    t.string "target", null: false
+    t.text "detail", null: false
+    t.boolean "is_published", default: false, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "discarded_at"
+    t.index ["discarded_at"], name: "index_projects_on_discarded_at"
+    t.index ["user_id"], name: "index_projects_on_user_id"
+  end
+
+  create_table "projects_tags", force: :cascade do |t|
+    t.integer "project_id", null: false
+    t.integer "tag_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["project_id"], name: "index_projects_tags_on_project_id"
+    t.index ["tag_id"], name: "index_projects_tags_on_tag_id"
   end
 
   create_table "relationships", force: :cascade do |t|
@@ -75,6 +98,9 @@ ActiveRecord::Schema.define(version: 2022_10_11_062653) do
   add_foreign_key "post_likes", "posts"
   add_foreign_key "post_likes", "users"
   add_foreign_key "posts", "users"
+  add_foreign_key "projects", "users"
+  add_foreign_key "projects_tags", "projects"
+  add_foreign_key "projects_tags", "tags"
   add_foreign_key "relationships", "users", column: "followed_id"
   add_foreign_key "relationships", "users", column: "follower_id"
   add_foreign_key "tags", "tag_categories"

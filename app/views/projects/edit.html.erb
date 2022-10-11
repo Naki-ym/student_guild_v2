@@ -1,0 +1,50 @@
+<% if @project.errors.full_messages %>
+  <% @project.errors.full_messages.each do |message| %>
+    <div class="error-msg">
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<section class="form-wrapper">
+  <div class="page-top-btns">
+    <%= link_to("/projects/#{params[:id]}", class: "page-back") do %>
+      <i class="fas fa-angle-left"></i>
+      <p>戻る</p>
+    <% end %>
+  </div>
+  <h1>プロジェクトの編集</h1>
+  <%= form_with model: @project, url: "/projects/#{@project.id}" do |f| %>
+    <div class="form">
+      <div class="form-item">
+        <h2>プロジェクト名</h2>
+        <%= f.text_field :name, class: "textbox" %>
+      </div>
+      <div class="form-item">
+        <h2>概要</h2>
+        <%= f.text_field :overview, class: "textbox" %>
+      </div>
+      <div class="form-item">
+        <h2>募集対象</h2>
+        <%= f.text_field :target, class: "textbox" %>
+      </div>
+      <div class="form-item">
+        <h2>詳細</h2>
+        <%= f.text_area :detail, class: "textarea" %>
+      </div>
+      <div class="form-item">
+        <h2>タグ</h2>
+        <div class="selects">
+          <%= f.collection_select :tag_category_id, @categories, :id, :name, {selected: @tag.category.id},
+            {data: {remote: true, url: url_for(action: :dynamic_tag)}, class: "select"} %>
+          <div id="tag-select">
+            <%= select_tag "tag", options_from_collection_for_select(@tag.category.tags, :id, :name, { :selected => @tag.id}), {class: "select"} %>
+          </div>
+        </div>
+      </div>
+      <div class="btns">
+        <%= f.submit "保存", class: "btn" %>
+      </div>
+    </div>
+  <% end %>
+</section>
