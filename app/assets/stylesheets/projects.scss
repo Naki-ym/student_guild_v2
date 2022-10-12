@@ -8,9 +8,10 @@
   display: flex;
   overflow: hidden;
   .projects-left {
-    flex: 1;
+    width: 22%;
     .fixed {
-      position: fixed;
+      position: absolute;
+      width: 18vw;
       .menu {
         background-color: $base-color-10;
         box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
@@ -19,7 +20,7 @@
         overflow: scroll;
         padding: 16px;
         text-align: left;
-        width: 14vw;
+        width: 100%;
         .menu-list {
           padding: 10px;
           li {
@@ -66,7 +67,7 @@
     }
   }
   .projects-right {
-    flex: 4 ;
+    flex: 1;
     padding: 16px;
     padding-left: 24px;
     h1 {
