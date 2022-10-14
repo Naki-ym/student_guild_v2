@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_11_135306) do
+ActiveRecord::Schema.define(version: 2022_10_14_124144) do
+
+  create_table "entries", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "project_id", null: false
+    t.string "content", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "discarded_at"
+    t.index ["discarded_at"], name: "index_entries_on_discarded_at"
+    t.index ["project_id"], name: "index_entries_on_project_id"
+    t.index ["user_id"], name: "index_entries_on_user_id"
+  end
 
   create_table "post_likes", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -95,6 +107,8 @@ ActiveRecord::Schema.define(version: 2022_10_11_135306) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "entries", "projects"
+  add_foreign_key "entries", "users"
   add_foreign_key "post_likes", "posts"
   add_foreign_key "post_likes", "users"
   add_foreign_key "posts", "users"

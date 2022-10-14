@@ -48,7 +48,7 @@
         <% if @entry %>
           <h2>応募済み</h2>
         <% else %>
-          <%= button_to "応募する", "/projects/#{@project.id}/entry", {method: :get, class: "btn"} %>
+          <%= button_to "応募する", "/projects/#{@project.id}/entries/new", {method: :get, class: "btn"} %>
         <%end%>
       <% end %>
     </div>

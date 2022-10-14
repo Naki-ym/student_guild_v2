@@ -1,0 +1,29 @@
+<div class="wrapper">
+  <div class="page-top-btns">
+    <%= link_to("/projects/#{params[:id]}", class: "page-back") do %>
+      <i class="fas fa-angle-left"></i>
+      <p>戻る</p>
+    <% end %>
+  </div>
+  <div class="entry-list">
+    <% if @entries.size > 0 %>
+      <% @entries.each do |entry| %>
+        <div class="entry-box">
+          <div class="entry-box-top">
+            <div class="entry-user-box">
+              <%= link_to("/users/#{entry.user.id}") do %>
+                <%= image_tag "icon.png", class: "usericon" %>
+                <p><%= entry.user.name %></p>
+              <% end %>
+            </div>
+          </div>
+          <div class="entry-content">
+            <p><%= simple_format(entry.content) %></p>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <p>応募はまだありません</p>
+    <% end %>
+  </div>
+</div>

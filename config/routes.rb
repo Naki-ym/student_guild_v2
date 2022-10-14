@@ -14,6 +14,7 @@ Rails.application.routes.draw do
       post  :publish
       post  :unpublish
     end
+    resources :entries, only: [:index, :create, :new ]
   end
 
   resources :tags, only: [:index, :create, :new, :edit, :update, :destroy] do

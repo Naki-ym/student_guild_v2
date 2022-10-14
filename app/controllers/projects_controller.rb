@@ -60,7 +60,7 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.kept.find_by(id: params[:id])
-    # @entry   = Entry.kept.find_by(user_id: current_user.id, project_id: params[:id])
+    @entry   = Entry.kept.find_by(user_id: current_user.id, project_id: params[:id])
   end
 
   def edit
@@ -107,30 +107,6 @@ class ProjectsController < ApplicationController
     redirect_to("/projects/myprojects")
   end
 
-  # def entry_page
-  #   @project = Project.kept.find_by(id: params[:id])
-  #   @entry   = Entry.new
-  # end
-
-  # def entry
-  #   @entry = Entry.new(entry_params)
-  #   #応募済みでないか
-  #   unless Entry.kept.find_by(user_id: current_user.id, project_id: params[:id])
-  #     if @entry.save
-  #       redirect_to("/projects/#{params[:id]}")
-  #     else
-  #       render("projects/entry_page")
-  #     end
-  #   else
-  #     @project = Project.kept.find_by(id: params[:id])
-  #     render("projects/entry_page")
-  #   end
-  # end
-
-  # def entry_list
-  #   @entries = Entry.kept.where(project_id: params[:id])
-  # end
-
   def destroy
     #このプロジェクトへの応募も削除
     #projects_tagも削除
@@ -143,8 +119,4 @@ class ProjectsController < ApplicationController
   def project_params
     params.require(:project).permit(:name, :overview, :target, :detail, :image, :image_cache, :tag, :tag_category_id).merge(user_id: current_user.id)
   end
-
-  # def entry_params
-  #   params.require(:entry).permit(:content).merge(user_id: current_user.id, project_id: params[:id])
-  # end
 end
