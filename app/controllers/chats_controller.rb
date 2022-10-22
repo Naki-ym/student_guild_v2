@@ -50,7 +50,7 @@ class ChatsController < ApplicationController
 
   def create
     @users_id = params[:users]
-    @room     = Room.new(name: params[:name], caption: params[:caption], is_group_chat: true)
+    @room     = Room.new(name: params[:name], is_group_chat: true)
     if @room.save
       @members = [current_user]
       @users_id.each do |user_id|
@@ -88,7 +88,7 @@ class ChatsController < ApplicationController
           @users << user
         end
       end
-      render("chats/create")
+      render("chats/new")
     end
   end
 
