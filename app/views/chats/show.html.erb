@@ -2,39 +2,16 @@
   <div class="chat-wrapper">
     <li class="room-li">
       <% @rooms.each do |room| %>
-        <% if room.id == params[:id].to_i %>
-          <% if room.is_group_chat %>
-            <ul class="active">
-              <%= link_to("/chats/#{room.id}") do %>
-                <h2><%= room.name %></h2>
-                <p><%= get_newest_message(room.id) %></p>
-              <% end %>
-            </ul>
-          <% else %>
-            <ul class="active">
-              <%= link_to("/chats/#{room.id}") do %>
-                <h2><%= room.joinning_members(current_user).first.name %></h2>
-                <p><%= get_newest_message(room.id) %></p>
-              <% end %>
-            </ul>
+        <ul class="<%= "active" if room.id == params[:id].to_i %>">
+          <%= link_to("/chats/#{room.id}") do %>
+            <% if room.is_group_chat %>
+              <h2><%= room.name %></h2>
+            <% else %>
+              <h2><%= room.joinning_members(current_user).first.name %></h2>
+            <% end %>
+            <p><%= get_newest_message(room.id) %></p>
           <% end %>
-        <% else %>
-          <% if room.is_group_chat %>
-            <ul>
-              <%= link_to("/chats/#{room.id}") do %>
-                <h2><%= room.name %></h2>
-                <p><%= get_newest_message(room.id) %></p>
-              <% end %>
-            </ul>
-          <% else %>
-            <ul>
-              <%= link_to("/chats/#{room.id}") do %>
-                <h2><%= room.joinning_members(current_user).first.name %></h2>
-                <p><%= get_newest_message(room.id) %></p>
-              <% end %>
-            </ul>
-          <% end %>
-        <% end %>
+        </ul>
       <% end %>
       <ul>
         <%= link_to("/chats/new") do %>
