@@ -22,7 +22,7 @@
     </section>
     <section class="projects-right">
       <% if params[:tag] %>
-        <h1><%= @tag.name %>タグのついたプロジェクト</h1>
+        <h1>「<%= @tag.name %>」タグのついたプロジェクト</h1>
       <% end %>
       <div class="projects-bord">
         <% @projects.each do |project| %>

@@ -1,0 +1,77 @@
+<div class="not-scroll">
+  <div class="chat-wrapper">
+    <li class="room-li">
+      <% @rooms.each do |room| %>
+        <% if room.id == params[:id].to_i %>
+          <% if room.is_group_chat %>
+            <ul class="active">
+              <%= link_to("/chats/#{room.id}") do %>
+                <h2><%= room.name %></h2>
+                <p><%= get_newest_message(room.id) %></p>
+              <% end %>
+            </ul>
+          <% else %>
+            <ul class="active">
+              <%= link_to("/chats/#{room.id}") do %>
+                <h2><%= room.joinning_members(current_user).first.name %></h2>
+                <p><%= get_newest_message(room.id) %></p>
+              <% end %>
+            </ul>
+          <% end %>
+        <% else %>
+          <% if room.is_group_chat %>
+            <ul>
+              <%= link_to("/chats/#{room.id}") do %>
+                <h2><%= room.name %></h2>
+                <p><%= get_newest_message(room.id) %></p>
+              <% end %>
+            </ul>
+          <% else %>
+            <ul>
+              <%= link_to("/chats/#{room.id}") do %>
+                <h2><%= room.joinning_members(current_user).first.name %></h2>
+                <p><%= get_newest_message(room.id) %></p>
+              <% end %>
+            </ul>
+          <% end %>
+        <% end %>
+      <% end %>
+      <ul>
+        <%= link_to("/chats/new") do %>
+          <i class="fas fa-plus"></i>
+          <p>トークルーム追加</p>
+        <% end %>
+      </ul>
+    </li>
+    <section class="talk-room">
+      <div class="chat-box scroll-from-bottom">
+        <% @messages.each do |msg| %>
+          <% if msg.user == @current_user %>
+            <div class="user-msg">
+              <div class="msg-box">
+                <div class="text-msg"><%= simple_format(msg.content) %></div>
+              </div>
+            </div>
+          <% else %>
+            <div class="partner-msg">
+              <p><%= msg.user.name %></p>
+              <div class="msg-box">
+                <div class="text-msg"><%= simple_format(msg.content) %></div>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+      <%= form_tag("/chats/#{@current_room.id}/messages", class: "text-box") do %>
+        <div class="border">
+          <textarea class="new-msg" rows="1" name="content"></textarea>
+        </div>
+        <%= button_tag(type: 'submit') do %>
+          <i class="far fa-paper-plane" title="送信"></i>
+        <% end %>
+      <% end %>
+    </section>
+  </div>
+  
+  <%= javascript_pack_tag 'chats/chats' %>
+</div>

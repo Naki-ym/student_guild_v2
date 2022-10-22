@@ -1,0 +1,39 @@
+<div class="not-scroll">
+  <div class="chat-wrapper">
+    <li class="room-li">
+      <% @rooms.each do |room| %>
+        <% if room.is_group_chat %>
+          <ul>
+            <%= link_to("/chats/#{room.id}") do %>
+              <h2><%= room.name %></h2>
+              <p><%= get_newest_message(room.id) %></p>
+            <% end %>
+          </ul>
+        <% else %>
+          <ul>
+            <%= link_to("/chats/#{room.id}") do %>
+              <h2><%= room.joinning_members(current_user).first.name %></h2>
+              <p><%= get_newest_message(room.id) %></p>
+            <% end %>
+          </ul>
+        <% end %>
+      <% end %>
+      <ul>
+        <%= link_to("/chats/new") do %>
+          <i class="fas fa-plus"></i>
+          <p>トークルーム追加</p>
+        <% end %>
+      </ul>
+    </li>
+    <section class="talk-room">
+      <div class="no-talkroom">
+        <p>
+          トークルームを選択して<br>
+          仲間とチャットしよう！
+        </p>
+      </div>
+    </section>
+  </div>
+  
+  <%= javascript_pack_tag 'chats/chats' %>
+</div>

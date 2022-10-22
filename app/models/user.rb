@@ -7,6 +7,9 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :post_likes, dependent: :destroy
   has_many :likes_posts, through: :post_likes, source: :post #いいねした投稿
+  has_many :room_users
+  has_many :rooms, through: :room_users
+  has_many :messages
   has_many :projects
   has_many :entries
 
@@ -37,5 +40,39 @@ class User < ApplicationRecord
 
   def followings
     return self.following_user
+  end
+
+  #所属している全ての個人チャットを返す
+  def joinning_individual_rooms
+    rooms = self.rooms.where(is_group_chat: false)
+    return rooms
+  end
+
+  def connected?(current_user)
+    #所属の部屋を取得
+    rooms = self.rooms.where(is_group_chat: false)
+    user_ids = []
+    #所属しているチャットの相手のidを取得して配列へ
+    rooms.each do |room|
+      users = room.joinning_members(self)
+      users.each do |user|
+        if user.id != self.id
+          user_ids << user.id
+        end
+      end
+    end
+    #そこに自分がいればtrueを返す
+    if user_ids.include?(current_user.id)
+      true
+    end
+  end
+
+  #その相手と個人チャットしているときそのidを返す
+  def connected_individual_room(current_user)
+    #所属の部屋を取得
+    user_rooms         = self.rooms.where(is_group_chat: false)
+    current_user_rooms = current_user.rooms.where(is_group_chat: false)
+    room = user_rooms & current_user_rooms
+    return room
   end
 end

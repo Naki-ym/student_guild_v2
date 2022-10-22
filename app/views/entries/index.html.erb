@@ -16,6 +16,11 @@
                 <p><%= entry.user.name %></p>
               <% end %>
             </div>
+            <% if entry.user.connected?(current_user) %>
+              <%= link_to("", "/chats/#{entry.user.connected_individual_room(current_user)[0].id}", class: "icon far fa-envelope") %>
+            <% else %>
+              <%= link_to("", "/chats/#{entry.user.id}", class: "icon far fa-envelope", method: :post) %>
+            <% end %>
           </div>
           <div class="entry-content">
             <p><%= simple_format(entry.content) %></p>

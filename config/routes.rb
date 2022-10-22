@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
   root 'home#top'
 
+  resources :chats do
+    resources :messages, only: [:create]
+  end
+  post "chats/:id" => "chats#create_individual", as: "chats_individual"
+
   resources :posts do
     resource :post_likes, only: [:create, :destroy]
   end
