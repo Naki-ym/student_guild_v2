@@ -9,8 +9,8 @@
 <div class="tl-wrapper">
   <section class="tl-left">
     <ul>
-      <li><%= link_to("フォローしているユーザー", "/posts", {class: "menu-list-textbtn"}) %></li>
-      <li><%= link_to("すべてのユーザー", "/posts?search=all", {class: "menu-list-textbtn"}) %></li>
+      <li><%= link_to("フォローしているユーザー", "/posts", {class: "menu-list-textbtn #{"active" if params[:search] == nil}"}) %></li>
+      <li><%= link_to("すべてのユーザー", "/posts?search=all", {class: "menu-list-textbtn #{"active" if params[:search] == "all"}"}) %></li>
     </ul>
   </section>
   <section class="tl-post-list">
