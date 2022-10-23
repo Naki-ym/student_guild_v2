@@ -1,1 +1,22 @@
 ja:
+  activerecord:
+    attributes:
+      entry:
+        content: "自己PR"
+      message:
+        content: "メッセージ"
+      post:
+        content: "投稿内容"
+      project:
+        name: "プロジェクト名"
+        overview: "概要"
+        target: "募集対象"
+        detail: "詳細"
+        image: "サムネイル"
+      room:
+        name: "トークルーム名"
+      tag_category:
+        name: "タグカテゴリー名"
+      tag:
+        name: "タグ名"
+        tag_category_id: "タグカテゴリー"
