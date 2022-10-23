@@ -29,7 +29,7 @@
         <h2>アイコン</h2>
         <div class="form-iconbox">
           <%= image_tag(@user.icon.url, class: "preview-usericon") if @user.icon? %>
-          <%= f.file_field :icon %>
+          <%= f.file_field :icon, accept: "image/jpg,image/jpeg,image/gif,image/png" %>
           <%= f.hidden_field :icon_cache %>
         </div>
       </div>
