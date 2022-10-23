@@ -12,7 +12,11 @@
           <div class="entry-box-top">
             <div class="entry-user-box">
               <%= link_to("/users/#{entry.user.id}") do %>
-                <%= image_tag "icon.png", class: "usericon" %>
+                <% if entry.user.icon? %>
+                  <%= image_tag entry.user.icon.url, class:"usericon" %>
+                <% else %>
+                  <%= image_tag "icon.png", class: "usericon" %>
+                <% end %>
                 <p><%= entry.user.name %></p>
               <% end %>
             </div>

@@ -4,15 +4,18 @@ one:
   email: naoki@mail.com
   encrypted_password: <%= Devise::Encryptor.digest(User, 'Naoki') %>
   admin: true
+  icon: image.png
 
 two:
   id: 2
   name: Tatsuya
   email: tatsuya@mail.com
   encrypted_password: <%= Devise::Encryptor.digest(User, 'Tatsuya') %>
+  icon: image.png
 
 three:
   id: 3
   name: Masato
   email: masato@mail.com
   encrypted_password: <%= Devise::Encryptor.digest(User, 'Masato') %>
+  icon: image.png

@@ -1,6 +1,10 @@
 <div class="wrapper">
   <section class="user-box">
-    <%= image_tag "icon.png", class: "big-usericon" %>
+    <% if @user.icon? %>
+      <%= image_tag @user.icon.url, class:"big-usericon" %>
+    <% else %>
+      <%= image_tag "icon.png", class: "big-usericon" %>
+    <% end %>
     <div class="user-box-right">
       <%= render partial:"relationships/user_box_right", lacals: {user: @user} %>
     </div>
@@ -11,7 +15,11 @@
         <div class="post-box">
           <div class="post-top">
             <div class="post-user-box">
-              <%= image_tag "icon.png", class: "usericon" %>
+              <% if post.user.icon? %>
+                <%= image_tag post.user.icon.url, class:"usericon" %>
+              <% else %>
+                <%= image_tag "icon.png", class: "usericon" %>
+              <% end %>
               <p><%= post.user.name %></p>
             </div>
             <a href="" class="md-btn" data-target="modal<%= post.id %>"><i class="fas fa-ellipsis-v"></i></a>

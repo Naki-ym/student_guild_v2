@@ -24,7 +24,16 @@
       <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
         <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
       <% end %>
-    
+
+      <div class="form-item">
+        <h2>アイコン</h2>
+        <div class="form-iconbox">
+          <%= image_tag(@user.icon.url, class: "preview-usericon") if @user.icon? %>
+          <%= f.file_field :icon %>
+          <%= f.hidden_field :icon_cache %>
+        </div>
+      </div>
+
       <div class="form-item">
         <h2>
           新しいパスワード

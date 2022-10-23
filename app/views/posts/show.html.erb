@@ -4,7 +4,11 @@
       <div class="post-top">
         <%= link_to("/users/#{@post.user.id}") do %>
           <div class="post-user-box">
-            <%= image_tag "icon.png", class: "usericon" %>
+            <% if @post.user.icon? %>
+              <%= image_tag @post.user.icon.url, class:"usericon" %>
+            <% else %>
+              <%= image_tag "icon.png", class: "usericon" %>
+            <% end %>
             <p><%= @post.user.name %></p>
           </div>
         <% end %>

@@ -29,7 +29,11 @@
             <li><%= link_to("Chat", "/chats", {class: "header-list-item"}) %></li>
             <li>
               <%= link_to("/users/#{current_user.id}") do %>
+                <% if current_user.icon? %>
+                <%= image_tag current_user.icon.url, class:"header-usericon" %>
+              <% else %>
                 <%= image_tag "icon.png", class: "header-usericon" %>
+              <% end %>
               <% end %>
             </li>
           <% else %>

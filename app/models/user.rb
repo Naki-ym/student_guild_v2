@@ -18,6 +18,8 @@ class User < ApplicationRecord
   has_many :following_user, through: :follower, source: :followed # 自分がフォローしている人
   has_many :follower_user, through: :followed, source: :follower # 自分をフォローしている人
 
+  mount_uploader :icon, IconUploader
+
   #いいねされている？
   def liked_by?(post_id)
     post_likes.where(post_id: post_id).exists?
