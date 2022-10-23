@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   def admin_user
-    if current_user.admin == false || current_user.id == 1
+    if current_user.admin == false || current_user.id != 1
       flash[:notice] = "管理者権限のあるアカウントのみアクセスできます"
       redirect_to("/users/#{current_user.id}")
     end
