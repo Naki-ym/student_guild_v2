@@ -16,9 +16,15 @@
       </label>
     </li>
     <li class="redtext">
-      <%= link_to(destroy_user_session_path, method: :delete) do %>
+      <%= link_to(destroy_user_session_path, data: { confirm: "本当にログアウトしますか？" }, method: :delete) do %>
         <i class="fas fa-sign-out-alt"></i>
         <p>ログアウト</p>
+      <% end %>
+    </li>
+    <li class="redtext">
+      <%= link_to(user_registration_path, data: { confirm: "本当にアカウントを削除しますか？" }, method: :delete) do %>
+        <i class="fas fa-user-slash"></i>
+        <p>アカウントを削除</p>
       <% end %>
     </li>
   </ul>
