@@ -1,4 +1,7 @@
 class RelationshipsController < ApplicationController
+  #ログインしていないユーザーがアクセスできない
+  before_action :authenticate_user!
+
   def create
     @user = User.find_by(id: params[:user_id])
     @following_users = @user.following_user

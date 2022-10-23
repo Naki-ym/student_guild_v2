@@ -1,4 +1,7 @@
 class EntriesController < ApplicationController
+  #ログインしていないユーザーがアクセスできない
+  before_action :authenticate_user!
+
   def index
     @entries = Entry.kept.where(project_id: params[:project_id])
   end

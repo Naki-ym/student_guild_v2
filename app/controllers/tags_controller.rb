@@ -1,4 +1,7 @@
 class TagsController < ApplicationController
+  #管理者アカウントのみがアクセスできる
+  before_action :admin_user
+
   def index
     @tags = Tag.kept.order(created_at: :asc)
     @sort_list = {"作成順（昇順）": 1, "作成順（降順）": 2, "カテゴリ順": 3, "名前順": 4}
