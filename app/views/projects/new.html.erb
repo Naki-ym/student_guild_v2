@@ -13,6 +13,12 @@
         <%= f.text_field :name, class: "textbox" %>
       </div>
       <div class="form-item">
+        <h2>サムネイル</h2>
+        <%= image_tag(@project.image.url) if @project.image? %>
+        <%= f.file_field :image %>
+        <%= f.hidden_field :image_cache %>
+      </div>
+      <div class="form-item">
         <h2>概要</h2>
         <%= f.text_field :overview, class: "textbox" %>
       </div>

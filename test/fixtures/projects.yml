@@ -6,6 +6,7 @@ one:
   target: 高校生
   detail: ○○高校の軽音楽部でバンドをしている者です。バンドでMVを制作したいということになったので募集します。
   is_published: true
+  image: image.png
 
 two:
   id: 2
@@ -15,3 +16,4 @@ two:
   target: 高校生
   detail: よろしくお願いします。
   is_published: true
+  image: image.png

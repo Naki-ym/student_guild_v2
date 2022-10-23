@@ -12,7 +12,7 @@ class Project < ApplicationRecord
   has_many :projects_tags
   has_many :tags, through: :projects_tags
 
-  # mount_uploader :image, ProjectImageUploader
+  mount_uploader :image, ProjectImageUploader
 
   def user
     return User.find_by(id: self.user_id)
