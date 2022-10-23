@@ -9,7 +9,7 @@
 </div>
 <div class="user-box-btnarea">
   <% if @user.id == current_user.id %>
-    <% if @user.admin? %>
+    <% if @user.admin? || @user.id == 1 %>
       <%= link_to("管理画面", "/users/admin_settings", class: "btn") %>
     <% end %>
     <%= link_to("アカウント情報の編集", "/users/edit", class: "btn") %>

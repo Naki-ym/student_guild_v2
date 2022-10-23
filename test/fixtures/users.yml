@@ -3,7 +3,6 @@ one:
   name: Naoki
   email: naoki@mail.com
   encrypted_password: <%= Devise::Encryptor.digest(User, 'Naoki') %>
-  admin: true
   icon: image.png
 
 two:
