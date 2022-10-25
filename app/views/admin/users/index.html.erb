@@ -1,0 +1,23 @@
+<div class="wrapper">
+  <div class="page-top-btns">
+    <%= link_to("/admin", class: "page-back") do %>
+      <i class="fas fa-angle-left"></i>
+      <p>戻る</p>
+    <% end %>
+  </div>
+  <h1>ユーザー一覧</h1>
+  <div class="user-list">
+    <% @users.each do |user| %>
+      <div class="user-tile">
+        <%= link_to("/admin/users/#{user.id}") do %>
+          <% if user.icon? %>
+            <%= image_tag user.icon.url, class:"usericon" %>
+          <% else %>
+            <%= image_tag "icon.png", class: "usericon" %>
+          <% end %>
+          <p><%= user.name %></p>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

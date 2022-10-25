@@ -1,6 +1,15 @@
 Rails.application.routes.draw do
   root 'home#top'
 
+  namespace :admin do
+    root "top#index"
+    resources :users, only: [:index, :show] do
+      member do
+        patch :grant_admin
+      end
+    end
+  end
+
   resources :chats do
     resources :messages, only: [:create]
   end
@@ -41,7 +50,6 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show] do
     collection do
-      get :admin_settings
       get :settings
     end
     member do

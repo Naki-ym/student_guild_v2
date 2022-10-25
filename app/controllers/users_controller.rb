@@ -1,7 +1,4 @@
 class UsersController < ApplicationController
-  #管理者アカウントのみがアクセスできる
-  before_action :admin_user, {only: [:admin_settings]}
-
   def show
     @user            = User.find_by(id: params[:id])
     @posts           = Post.kept.where(user_id: @user.id).order(created_at: :desc)
@@ -24,8 +21,5 @@ class UsersController < ApplicationController
     @following_users = @user.following_user
     @follower_users  = @user.follower_user
     @users = @user.follower_user.reverse_order
-  end
-
-  def admin_settings
   end
 end

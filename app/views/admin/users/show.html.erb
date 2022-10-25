@@ -1,0 +1,16 @@
+<div class="wrapper">
+  <div class="page-top-btns">
+    <%= link_to("/admin/users", class: "page-back") do %>
+      <i class="fas fa-angle-left"></i>
+      <p>戻る</p>
+    <% end %>
+  </div>
+  <h1><%= @user.name %></h1>
+  <div class="btns">
+    <% if @user.admin %>
+      <p>管理者です</p>
+    <% else %>
+      <%= button_to "管理者権限を付与する", "/admin/users/#{@user.id}/grant_admin", {method: :patch, data: { confirm: "管理者権限を付与しますか？" }, class: "btn"} %>
+    <% end %>
+  </div>
+</div>
