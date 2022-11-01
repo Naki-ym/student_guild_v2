@@ -12,32 +12,32 @@
       <% end %>
     <% end %>
   </div>
-  <% if @project.image? %>
-    <%= image_tag @project.image.url, class:"project-img" %>
-  <% else %>
-    <%= image_tag "image.png", class: "project-img" %>
-  <% end %>
   <div class="project-show-box">
     <h2><%= @project.name %></h2>
-    <div class="project-show-data">
+    <% if @project.image? %>
+      <%= image_tag @project.image.url, class:"thumbnail" %>
+    <% else %>
+      <%= image_tag "image.png", class: "thumbnail" %>
+    <% end %>
+    <ul class="data">
       <% @project.tags.each do |tag| %>
-        <p>タグ：<%= tag.name %></p>
+        <li>タグ：<%= tag.name %></li>
       <% end %>
-      <p>募集条件：<%= @project.target %></p>
+      <li>募集条件：<%= @project.target %></li>
       <% if @project.user.id != current_user.id %>
-        <p>企画者：<%= @project.user.name %></p>
+        <li>企画者：<%= @project.user.name %></li>
       <% else %>
-        <p>
+        <li>
           公開状況：
           <% if @project.is_published == true %>
             公開中
           <% else %>
             非公開
           <% end %>
-        </p>
+        </li>
       <% end %>
-    </div>
-    <%= simple_format(@project.detail) %>
+    </ul>
+    <%= simple_format(@project.detail, class: "detail") %>
     <div class="btns">
       <% if @project.user.id == current_user.id %>
         <%= button_to "届いた応募を見る", "/projects/#{@project.id}/entries", {method: :get, class: "btn"} %>
@@ -53,8 +53,8 @@
           <h2>応募済み</h2>
         <% else %>
           <%= button_to "応募する", "/projects/#{@project.id}/entries/new", {method: :get, class: "btn"} %>
-        <%end%>
+        <% end %>
       <% end %>
-    </div>
+      </div>
   </div>
 </div>

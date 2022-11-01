@@ -9,13 +9,14 @@
   .projects-left {
     width: 22%;
     .fixed {
+      background-color: $base-color-10;
+      box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+      border-radius: 16px;
+      height: 86vh;
+      overflow: hidden;
       position: absolute;
       width: 18vw;
       .menu {
-        background-color: $base-color-10;
-        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-        border-radius: 4px;
-        height: 86vh;
         overflow: scroll;
         padding: 16px;
         text-align: left;
@@ -79,19 +80,62 @@
     gap: 40px 20px;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     .project-box {
-      transition: 0.2s;
-      .project-content {
-        padding-top: 10px;
-      }
-      &:hover {
-        opacity: 0.8;
+      background-color: $base-color-10;
+      border-radius: 16px;
+      box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+      overflow: hidden;
+      .content {
+        display: flex;
+        padding: 20px;
+        .details {
+          h2 {
+            font-size: 1em;
+            line-height: 1.3em;
+            font-size: 1.1em;
+          }
+          .target {
+            span {
+              padding-right: 8px;
+            }
+            padding-top: 8px;
+            font-size: 16px;
+          }
+          .overview {
+            padding-top: 8px;
+          }
+        }
       }
     }
   }
 }
 
+.project-show-box {
+  background-color: $base-color-10;
+  border-radius: 16px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  overflow: hidden;
+  padding: 20px;
+  h2 {
+    font-size: 2em;
+    line-height: 1.3em;
+  }
+  .thumbnail {
+    display: block;
+    margin: 0 auto;
+    width: 80%;
+  }
+  .data li {
+    padding-top: 8px;
+  }
+  .detail {
+    font-size: 1em;
+    line-height: 1.3em;
+    padding-top: 24px;
+    padding-bottom: 16px;
+  }
+}
+
 .project-img {
-  border-radius: 8px;
   width: 100%;
 }
 

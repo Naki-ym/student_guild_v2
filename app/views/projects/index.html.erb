@@ -26,24 +26,29 @@
       <% end %>
       <div class="projects-bord">
         <% @projects.each do |project| %>
-          <div class="project-box">
-            <%= link_to("/projects/#{project.id}") do %>
-              <% if project.image? %>
-                <%= image_tag project.image.url, class:"project-img" %>
-              <% else %>
-                <%= image_tag "image.png", class: "project-img" %>
-              <% end %>
-              <div class="project-content">
-                <h2><%= project.name %></h2>
-                <p>募集対象：<%= project.target %></p>
-                <p><%= project.overview %></p>
-              </div>
+          <%= link_to("/projects/#{project.id}", class: "project-box") do %>
+            <% if project.image? %>
+              <%= image_tag project.image.url, class:"project-img" %>
+            <% else %>
+              <%= image_tag "image.png", class: "project-img" %>
             <% end %>
-          </div>
+            <div class="content">
+              <% if project.user.icon? %>
+                <%= image_tag project.user.icon.url, class:"small-usericon" %>
+              <% else %>
+                <%= image_tag "icon.png", class: "small-usericon" %>
+              <% end %>
+              <div class="details">
+                <h2><%= project.name %></h2>
+                <p class="target"><span class="fas fa-search"></span><%= project.target %></p>
+                <p class="overview"><%= project.overview %></p>
+              </div>
+            </div>
+          <% end %>
         <% end %>
-        <div class="project-box">
+        <div>
         </div>
-        <div class="project-box">
+        <div>
         </div>
       </div>
     </section>
