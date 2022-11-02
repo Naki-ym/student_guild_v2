@@ -36,28 +36,31 @@
 
       <div class="form-item">
         <h2>
-          新しいパスワード
-          <% if @minimum_password_length %>
-            (<%= @minimum_password_length %>文字以上)
-          <% end %><br/>
-          <span class="form-note">(パスワードを変更しない場合は未入力のままにしてください)</span>
-        </h2>
-        <%= f.password_field :password, autocomplete: "new-password", class: "textbox" %>
-      </div>
-    
-      <div class="form-item">
-        <h2>新しいパスワードの確認</h2>
-        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "textbox" %>
-      </div>
-    
-      <div class="form-item">
-        <h2>
           現在のパスワード<br/>
           <span class="form-note">(変更を完了するために必要です)</span>
         </h2>
         <%= f.password_field :current_password, autocomplete: "current-password", class: "textbox" %>
       </div>
-    
+
+      <details>
+        <summary class="form-item">パスワードを変更する</summary>
+        <div class="form-item">
+          <h2>
+            新しいパスワード
+            <% if @minimum_password_length %>
+              (<%= @minimum_password_length %>文字以上)
+            <% end %><br/>
+            <span class="form-note">(パスワードを変更しない場合は未入力のままにしてください)</span>
+          </h2>
+          <%= f.password_field :password, autocomplete: "new-password", class: "textbox" %>
+        </div>
+        
+        <div class="form-item">
+          <h2>新しいパスワードの確認</h2>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "textbox" %>
+        </div>
+      </details>
+
       <div class="btns">
         <%= f.submit "保存", class: "btn" %>
       </div>
