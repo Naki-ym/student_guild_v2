@@ -44,12 +44,11 @@ class ProjectsController < ApplicationController
       overview:    project_params["overview"],
       target:      project_params["target"],
       detail:      project_params["detail"],
+      tag_id:      params[:tag],
       image:       project_params["image"],
       image_cache: project_params["image_cache"]
     )
     if params[:tag] != "---" and @project.save
-      @project_tag = ProjectsTag.new(project_id: @project.id, tag_id: params[:tag])
-      @project_tag.save
       redirect_to("/projects/myprojects")
     else
       @categories = TagCategory.kept.order(created_at: :asc)
@@ -76,13 +75,10 @@ class ProjectsController < ApplicationController
     @project.overview    = project_params["overview"]
     @project.target      = project_params["target"]
     @project.detail      = project_params["detail"]
+    @project.tag_id      = params[:tag]
     @project.image       = project_params["image"]
     @project.image_cache = project_params["image_cache"]
     if params[:tag] != "---" and @project.save
-      @project_tags = ProjectsTag.where(project_id: @project.id)
-      @project_tag = @project_tags.first
-      @project_tag.tag_id = params[:tag]
-      @project_tag.save
       flash[:notice] = "変更を保存しました"
       redirect_to("/projects/#{@project.id}/")
     else
@@ -109,7 +105,6 @@ class ProjectsController < ApplicationController
 
   def destroy
     #このプロジェクトへの応募も削除
-    #projects_tagも削除
     @project = Project.find_by(id: params[:id])
     @project.discard
     redirect_to("/projects/myprojects")

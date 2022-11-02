@@ -20,9 +20,7 @@
       <%= image_tag "image.png", class: "thumbnail" %>
     <% end %>
     <ul class="data">
-      <% @project.tags.each do |tag| %>
-        <li>タグ：<%= tag.name %></li>
-      <% end %>
+      <li>タグ：<%= @project.tag.name %></li>
       <li>募集条件：<%= @project.target %></li>
       <% if @project.user.id != current_user.id %>
         <li>企画者：<%= @project.user.name %></li>

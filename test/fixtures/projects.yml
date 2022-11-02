@@ -5,6 +5,7 @@ one:
   overview: 高校生バンドMV作成
   target: 高校生
   detail: ○○高校の軽音楽部でバンドをしている者です。バンドでMVを制作したいということになったので募集します。
+  tag_id: 6
   is_published: true
   image: image.png
 
@@ -15,5 +16,6 @@ two:
   overview: 現在開発中の新規SNSサービスのSEO対策をやってくれる方を募集します。
   target: 高校生
   detail: よろしくお願いします。
+  tag_id: 7
   is_published: true
   image: image.png
