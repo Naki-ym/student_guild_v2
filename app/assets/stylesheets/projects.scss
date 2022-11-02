@@ -51,12 +51,14 @@
             }
           }
           .list-btn {
-            padding: 4px 8px;
-            border-radius: 4px;
-            color: $base-color-10;
             background: $main-color;
             border: 1px solid $main-color;
+            border-radius: 4px;
+            color: $base-color-10;
+            display: block;
+            padding: 4px 8px;
             transition: 0.4s;
+            width: fit-content;
             &:hover {
               color: $main-color;
               background: $btn-main-color;
