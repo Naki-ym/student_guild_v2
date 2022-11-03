@@ -1,9 +1,9 @@
 @charset "utf-8";
-@import "_form";
-@import "_postlist";
-@import "_usericon";
-@import "_userlist";
-@import "_variable";
+@import "layout/form";
+@import "layout/postlist";
+@import "layout/usericon";
+@import "layout/userlist";
+@import "setting/variable";
 
 
 .user-box {

@@ -1,6 +1,6 @@
 @charset "utf-8";
-@import "_usericon";
-@import "_variable";
+@import "layout/usericon";
+@import "setting/variable";
 
 .not-scroll {
   height: calc(100px - 76px);

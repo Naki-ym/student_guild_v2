@@ -4,9 +4,9 @@
  */
 
 @charset "utf-8";
-@import "_reset";
-@import "_variable";
-@import "_table";
+@import "base/reset";
+@import "setting/variable";
+@import "layout/table";
 
 * {
   font-family: "游ゴシック", "Yu Gothic";
