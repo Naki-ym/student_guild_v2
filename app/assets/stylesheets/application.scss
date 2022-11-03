@@ -145,6 +145,6 @@ img {
   color: $accent-color-danger;
 }
 
-@import "_header";
-@import "_message";
-@import "_modalmenu";
+@import "layout/header";
+@import "layout/message";
+@import "layout/modalmenu";
