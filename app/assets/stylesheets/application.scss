@@ -5,8 +5,9 @@
 
 @charset "utf-8";
 @import "base/reset";
-@import "setting/variable";
+@import "function/mediaquery";
 @import "layout/table";
+@import "setting/variable";
 
 * {
   font-family: "游ゴシック", "Yu Gothic";
@@ -139,6 +140,9 @@ img {
 
 .under-header {
   height: 76px;
+  @include mq(sp) {
+    height: 16px;
+  }
 }
 
 .redtext * {
