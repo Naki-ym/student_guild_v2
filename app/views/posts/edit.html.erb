@@ -1,4 +1,4 @@
-<div class="wrapper">
+<div class="tl-wrapper">
   <section class="tl-post-list">
     <%= form_with model: @post, url: "/posts/#{@post.id}" do |f| %>
       <%= f.text_area :content, class: "newpost-text", rows: "2" %>

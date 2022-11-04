@@ -1,4 +1,5 @@
 @charset "utf-8";
+@import "../function/mediaquery";
 
 .header-usericon {
   border-radius: 50%;
@@ -30,4 +31,16 @@
   margin-right: 40px;
   user-select: none;
   width: 160px;
+  @include mq(tab) {
+    border-radius: 50%;
+    height: 120px;
+    width: 120px;
+  }
+  @include mq(sp) {
+    border-radius: 50%;
+    height: 160px;
+    margin-right: 0;
+    margin-bottom: 16px;
+    width: 160px;
+  }
 }

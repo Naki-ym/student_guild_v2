@@ -66,7 +66,7 @@ class ProjectsController < ApplicationController
     @categories = TagCategory.kept.order(created_at: :asc)
     @project    = Project.kept.find_by(id: params[:id])
     @tags       = Tag.kept.all.order(created_at: :asc)
-    @tag        = @project.tags.first
+    @tag        = @project.tag
   end
 
   def update

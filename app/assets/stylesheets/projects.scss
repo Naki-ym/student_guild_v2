@@ -119,8 +119,16 @@
     }
   }
   @include mq(sp) {
+    width: 100%;
     .projects-left {
       display: none;
+    }
+    .projects-bord {
+      display: block;
+      gap: 0;
+      .project-box {
+        display: block;
+      }
     }
   }
 }

@@ -40,6 +40,16 @@
       }
     }
   }
+  @include mq(sp) {
+    flex-direction: column;
+    .user-box-right {
+      text-align: center;
+    }
+    .user-box-btnarea {
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
 }
 
 .follows_followers_tab {
