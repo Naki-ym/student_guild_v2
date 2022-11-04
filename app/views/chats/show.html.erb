@@ -1,6 +1,6 @@
 <div class="not-scroll">
   <div class="chat-wrapper">
-    <li class="room-li">
+    <li class="room-li show-room-li">
       <% @rooms.each do |room| %>
         <ul class="<%= "active" if room.id == params[:id].to_i %>">
           <%= link_to("/chats/#{room.id}") do %>

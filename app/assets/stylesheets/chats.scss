@@ -166,4 +166,12 @@
       }
     }
   }
+  @include mq(sp) {
+    .index-talk-room {
+      display: none;
+    }
+    .show-room-li {
+      display: none;
+    }
+  }
 }
