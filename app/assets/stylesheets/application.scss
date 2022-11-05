@@ -147,10 +147,18 @@ img {
   }
 }
 
-.under-header {
+.under-header-top {
   height: 76px;
   @include mq(sp) {
     height: 16px;
+  }
+}
+
+.under-header-bottom {
+  display: none;
+  @include mq(sp) {
+    display: block;
+    height: 60px;
   }
 }
 

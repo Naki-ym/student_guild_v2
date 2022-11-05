@@ -1,3 +1,18 @@
+<span class="ham-btn">
+  <i></i>
+  <i></i>
+  <i></i>
+</span>
+<nav class="ham">
+  <ul class="ham-menu">
+    <li class="ham-menu-li"><%= link_to("< 戻る", "/projects") %></li>
+    <li class="ham-menu-li"><%= link_to("新規プロジェクト", "/projects/new", {class: "list-btn"}) %></li>
+    <li class="ham-menu-li"><%= link_to("すべて", "/projects/myprojects") %></li>
+    <li class="ham-menu-li"><%= link_to("公開済み", "/projects/myprojects?is_published=true") %></li>
+    <li class="ham-menu-li"><%= link_to("未公開", "/projects/myprojects?is_published=false") %></li> 
+  </ul>
+</nav>
+
 <div class="projects-wrapper">
   <section class="projects-left">
     <div class="fixed">
@@ -38,3 +53,5 @@
     </div>
   </section>
 </div>
+
+<%= javascript_pack_tag 'hamburger' %>

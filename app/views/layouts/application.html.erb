@@ -63,7 +63,7 @@
     </header>
 
     <% if controller.controller_name != "home" %>
-      <div class="under-header"></div>
+      <div class="under-header-top"></div>
     <% end %>
 
     <% if flash[:notice] %>
@@ -81,8 +81,13 @@
         <%= @error_message %>
       </div>
     <% end %>
+
     <%= yield %>
 
     <%= javascript_pack_tag 'modalmenu' %>
+
+    <% if controller.controller_name != "home" %>
+      <div class="under-header-bottom"></div>
+    <% end %>
   </body>
 </html>

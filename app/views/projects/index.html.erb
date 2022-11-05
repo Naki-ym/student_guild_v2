@@ -1,3 +1,25 @@
+<span class="ham-btn">
+  <i></i>
+  <i></i>
+  <i></i>
+</span>
+<nav class="ham">
+  <ul class="ham-menu">
+    <li class="ham-menu-li"><%= link_to("マイプロジェクト", "projects/myprojects", {class: "list-btn"}) %></li>
+    <li class="ham-menu-li"><%= link_to("すべて", "/projects", {class: "menu-list-textbtn"}) %></li>
+    <% @categories.each do |category| %>
+      <details>
+        <summary><%= category.name %></summary>
+        <ul>
+          <% category.tags.each do |tag| %>
+            <li class="ham-menu-li"><%= link_to(tag.name, "/projects?tag=#{tag.id}") %></li>
+          <% end %>
+        </ul>
+      </details>
+    <% end %>
+  </ul>
+</nav>
+
 <div class="projects-wrapper">
   <section class="projects-left">
     <div class="fixed">
@@ -52,3 +74,5 @@
     </div>
   </section>
 </div>
+
+<%= javascript_pack_tag 'hamburger' %>

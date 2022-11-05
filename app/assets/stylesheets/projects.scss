@@ -1,5 +1,6 @@
 @charset "utf-8";
 @import "function/mediaquery";
+@import "layout/hamburger";
 @import "setting/variable";
 
 .projects-wrapper {
@@ -120,6 +121,7 @@
     }
   }
   @include mq(sp) {
+    display: block;
     width: 100%;
     .projects-left {
       display: none;
