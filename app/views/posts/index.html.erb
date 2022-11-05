@@ -65,9 +65,7 @@
             </div>
           </div>
           <%= link_to("/posts/#{post.id}") do %>
-            <div class="post-content">
-              <p><%= simple_format(post.content) %></p>
-            </div>
+            <%= simple_format(post.content, class: "post-content") %>
           <% end %>
           <div class="post-items" id="like_<%= post.id %>">
             <%= render 'posts/post_items', post: post %>

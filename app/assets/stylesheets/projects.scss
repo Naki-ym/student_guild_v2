@@ -71,10 +71,11 @@
   }
   .projects-right {
     flex: 1;
-    padding: 16px;
+    padding: 0 16px;
     padding-left: 24px;
     h1 {
-      font-size: 32px;
+      padding-top: 8px;
+      font-size: 1.8rem;
       padding-bottom: 16px;
     }
   }
@@ -140,7 +141,7 @@
   overflow: hidden;
   padding: 20px;
   h2 {
-    font-size: 2em;
+    font-size: 1.6rem;
     line-height: 1.3em;
   }
   .thumbnail {
@@ -156,6 +157,11 @@
     line-height: 1.3em;
     padding-top: 24px;
     padding-bottom: 16px;
+  }
+  @include mq(sp) {
+    h2 {
+      font-size: 1.2rem;
+    }
   }
 }
 

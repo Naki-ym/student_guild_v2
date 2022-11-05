@@ -42,9 +42,7 @@
           </ul>
         </div>
       </div>
-      <div class="post-content">
-        <p><%= simple_format(@post.content) %></p>
-      </div>
+      <%= simple_format(@post.content, class: "post-content") %>
       <div class="post-items" id="like_<%= @post.id %>">
         <%= render 'posts/post_items', post: @post %>
       </div>
