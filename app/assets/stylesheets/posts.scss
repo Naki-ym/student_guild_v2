@@ -69,7 +69,7 @@
     width: 90%;
   }
   @include mq(sp) {
-    margin: 0 auto;
+    margin: 32px auto 0;
     width: 90%;
     .tl-left {
       display: none;

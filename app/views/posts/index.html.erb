@@ -6,6 +6,18 @@
   <% end %>
 <% end %>
 
+<span class="ham-btn">
+  <i></i>
+  <i></i>
+  <i></i>
+</span>
+<nav class="ham">
+  <ul class="ham-menu">
+    <li><%= link_to("フォローしているユーザー", "/posts", {class: "menu-list-textbtn #{"active" if params[:search] == nil}"}) %></li>
+    <li><%= link_to("すべてのユーザー", "/posts?search=all", {class: "menu-list-textbtn #{"active" if params[:search] == "all"}"}) %></li>
+  </ul>
+</nav>
+
 <div class="tl-wrapper">
   <section class="tl-left">
     <ul>
@@ -76,4 +88,5 @@
   </section>
 </div>
 
+<%= javascript_pack_tag 'hamburger' %>
 <%= javascript_pack_tag 'posts/postform' %>
