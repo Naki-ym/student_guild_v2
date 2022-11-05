@@ -82,7 +82,7 @@ header {
     }
   }
   @include mq(sp) {
-    bottom: 0px;
+    bottom: 0;
     height: 60px;
     position: fixed;
     .header-logo {
