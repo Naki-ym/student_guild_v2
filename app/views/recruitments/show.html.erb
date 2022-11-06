@@ -1,0 +1,58 @@
+<div class="wrapper">
+  <div class="page-top-btns">
+    <% if @recruitment.user == current_user %>
+      <%= link_to("/recruitments/myrecruitments", class: "page-back") do %>
+        <i class="fas fa-angle-left"></i>
+        <p>戻る</p>
+      <% end %>
+    <% else %>
+      <%= link_to("/recruitments", class: "page-back") do %>
+        <i class="fas fa-angle-left"></i>
+        <p>戻る</p>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="recruitment-show-box">
+    <h2><%= @recruitment.name %></h2>
+    <% if @recruitment.image? %>
+      <%= image_tag @recruitment.image.url, class:"thumbnail" %>
+    <% else %>
+      <%= image_tag "image.png", class: "thumbnail" %>
+    <% end %>
+    <ul class="data">
+      <li>タグ：<%= @recruitment.tag.name %></li>
+      <li>募集条件：<%= @recruitment.target %></li>
+      <% if @recruitment.user.id != current_user.id %>
+        <li>企画者：<%= @recruitment.user.name %></li>
+      <% else %>
+        <li>
+          公開状況：
+          <% if @recruitment.is_published == true %>
+            公開中
+          <% else %>
+            非公開
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+    <%= simple_format(@recruitment.detail, class: "detail") %>
+    <div class="btns">
+      <% if @recruitment.user.id == current_user.id %>
+        <%= button_to "届いた応募を見る", "/recruitments/#{@recruitment.id}/entries", {method: :get, class: "btn"} %>
+        <% if @recruitment.is_published == true %>
+          <%= button_to "非公開にする", "/recruitments/#{@recruitment.id}/unpublish", {class: "btn"} %>
+        <% else %>
+          <%= button_to "公開する", "/recruitments/#{@recruitment.id}/publish", {class: "btn"} %>
+        <%end%>
+        <%= button_to "編集", "/recruitments/#{@recruitment.id}/edit", {method: :get, class: "btn"} %>
+        <%= button_to "削除", "/recruitments/#{@recruitment.id}", {method: :delete, class: "btn"} %>
+      <% else %>
+        <% if @entry %>
+          <h2>応募済み</h2>
+        <% else %>
+          <%= button_to "応募する", "/recruitments/#{@recruitment.id}/entries/new", {method: :get, class: "btn"} %>
+        <% end %>
+      <% end %>
+      </div>
+  </div>
+</div>

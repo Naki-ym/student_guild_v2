@@ -1,4 +1,4 @@
-class Project < ApplicationRecord
+class Recruitment < ApplicationRecord
   include Discard::Model
 
   validates :user_id, {presence: true}
@@ -12,7 +12,7 @@ class Project < ApplicationRecord
   belongs_to :tag
   has_many :entries
 
-  mount_uploader :image, ProjectImageUploader
+  mount_uploader :image, RecruitmentImageUploader
 
   def tag
     return Tag.find_by(id: self.tag_id)

@@ -10,7 +10,7 @@ class User < ApplicationRecord
   has_many :room_users
   has_many :rooms, through: :room_users
   has_many :messages
-  has_many :projects
+  has_many :recruitments
   has_many :entries
 
   has_many :follower, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy

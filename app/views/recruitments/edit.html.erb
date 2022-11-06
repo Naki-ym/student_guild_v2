@@ -1,12 +1,20 @@
-<div class="form-wrapper">
+<% if @recruitment.errors.full_messages %>
+  <% @recruitment.errors.full_messages.each do |message| %>
+    <div class="error-msg">
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<section class="form-wrapper">
   <div class="page-top-btns">
-    <%= link_to("/projects/myprojects", class: "page-back") do %>
+    <%= link_to("/recruitments/#{params[:id]}", class: "page-back") do %>
       <i class="fas fa-angle-left"></i>
       <p>戻る</p>
     <% end %>
   </div>
-  <h1>新規プロジェクト</h1>
-  <%= form_with model: @project, url: "/projects" do |f| %>
+  <h1>プロジェクトの編集</h1>
+  <%= form_with model: @recruitment, url: "/recruitments/#{@recruitment.id}" do |f| %>
     <div class="form">
       <div class="form-item">
         <h2>プロジェクト名</h2>
@@ -14,7 +22,7 @@
       </div>
       <div class="form-item">
         <h2>サムネイル</h2>
-        <%= image_tag(@project.image.url) if @project.image? %>
+        <%= image_tag(@recruitment.image.url) if @recruitment.image? %>
         <%= f.file_field :image, accept: "image/jpg,image/jpeg,image/gif,image/png" %>
         <%= f.hidden_field :image_cache %>
       </div>
@@ -33,16 +41,16 @@
       <div class="form-item">
         <h2>タグ</h2>
         <div class="selects">
-          <%= f.collection_select :tag_category_id, @categories, :id, :name, {include_blank: "---", prompt: false },
+          <%= f.collection_select :tag_category_id, @categories, :id, :name, {selected: @tag.category.id},
             {data: {remote: true, url: url_for(action: :dynamic_tag)}, class: "select"} %>
           <div id="tag-select">
-            <%= select_tag "tag", options_for_select(["---"]), {class: "select"} %>
+            <%= select_tag "tag", options_from_collection_for_select(@tag.category.tags, :id, :name, { :selected => @tag.id}), {class: "select"} %>
           </div>
         </div>
       </div>
       <div class="btns">
-        <%= f.submit "作成", class: "btn" %>
+        <%= f.submit "保存", class: "btn" %>
       </div>
     </div>
   <% end %>
-</div>
+</section>

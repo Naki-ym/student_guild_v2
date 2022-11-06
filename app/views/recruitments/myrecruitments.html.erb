@@ -1,0 +1,57 @@
+<span class="ham-btn">
+  <i></i>
+  <i></i>
+  <i></i>
+</span>
+<nav class="ham">
+  <ul class="ham-menu">
+    <li class="ham-menu-li"><%= link_to("< 戻る", "/recruitments") %></li>
+    <li class="ham-menu-li"><%= link_to("新規プロジェクト", "/recruitments/new", {class: "list-btn"}) %></li>
+    <li class="ham-menu-li"><%= link_to("すべて", "/recruitments/myrecruitments") %></li>
+    <li class="ham-menu-li"><%= link_to("公開済み", "/recruitments/myrecruitments?is_published=true") %></li>
+    <li class="ham-menu-li"><%= link_to("未公開", "/recruitments/myrecruitments?is_published=false") %></li> 
+  </ul>
+</nav>
+
+<div class="recruitments-wrapper">
+  <section class="recruitments-left">
+    <div class="fixed">
+      <div class="menu">
+        <ul class="menu-list">
+          <li><%= link_to("< 戻る", "/recruitments") %></li>
+          <li><%= link_to("新規プロジェクト", "/recruitments/new", {class: "list-btn"}) %></li>
+          <li><%= link_to("すべて", "/recruitments/myrecruitments") %></li>
+          <li><%= link_to("公開済み", "/recruitments/myrecruitments?is_published=true") %></li>
+          <li><%= link_to("未公開", "/recruitments/myrecruitments?is_published=false") %></li> 
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="recruitments-right">
+    <h1>マイプロジェクト</h1>
+    <div class="recruitments-bord">
+      <% @recruitments.each do |recruitment| %>
+        <%= link_to("/recruitments/#{recruitment.id}", class: "recruitment-box") do %>
+          <% if recruitment.image? %>
+            <%= image_tag recruitment.image.url, class: "recruitment-img" %>
+          <% else %>
+            <%= image_tag "image.png", class: "recruitment-img" %>
+          <% end %>
+          <div class="content">
+            <div class="details">
+              <h2><%= recruitment.name %></h2>
+              <p class="target"><span class="fas fa-search"></span><%= recruitment.target %></p>
+              <p class="overview"><%= recruitment.overview %></p>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+      <div>
+      </div>
+      <div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<%= javascript_pack_tag 'hamburger' %>

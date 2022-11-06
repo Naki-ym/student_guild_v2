@@ -14,13 +14,13 @@ ActiveRecord::Schema.define(version: 2022_10_23_125237) do
 
   create_table "entries", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "project_id", null: false
+    t.integer "recruitment_id", null: false
     t.string "content", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.datetime "discarded_at"
     t.index ["discarded_at"], name: "index_entries_on_discarded_at"
-    t.index ["project_id"], name: "index_entries_on_project_id"
+    t.index ["recruitment_id"], name: "index_entries_on_recruitment_id"
     t.index ["user_id"], name: "index_entries_on_user_id"
   end
 
@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 2022_10_23_125237) do
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
-  create_table "projects", force: :cascade do |t|
+  create_table "recruitments", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "name", null: false
     t.string "overview", null: false
@@ -67,9 +67,9 @@ ActiveRecord::Schema.define(version: 2022_10_23_125237) do
     t.datetime "updated_at", precision: 6, null: false
     t.datetime "discarded_at"
     t.string "image", null: false
-    t.index ["discarded_at"], name: "index_projects_on_discarded_at"
-    t.index ["tag_id"], name: "index_projects_on_tag_id"
-    t.index ["user_id"], name: "index_projects_on_user_id"
+    t.index ["discarded_at"], name: "index_recruitments_on_discarded_at"
+    t.index ["tag_id"], name: "index_recruitments_on_tag_id"
+    t.index ["user_id"], name: "index_recruitments_on_user_id"
   end
 
   create_table "relationships", force: :cascade do |t|
@@ -134,15 +134,15 @@ ActiveRecord::Schema.define(version: 2022_10_23_125237) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "entries", "projects"
+  add_foreign_key "entries", "recruitments"
   add_foreign_key "entries", "users"
   add_foreign_key "messages", "rooms"
   add_foreign_key "messages", "users"
   add_foreign_key "post_likes", "posts"
   add_foreign_key "post_likes", "users"
   add_foreign_key "posts", "users"
-  add_foreign_key "projects", "tags"
-  add_foreign_key "projects", "users"
+  add_foreign_key "recruitments", "tags"
+  add_foreign_key "recruitments", "users"
   add_foreign_key "relationships", "users", column: "followed_id"
   add_foreign_key "relationships", "users", column: "follower_id"
   add_foreign_key "room_users", "rooms"

@@ -1,4 +1,4 @@
-class ProjectImageUploader < CarrierWave::Uploader::Base
+class RecruitmentImageUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
   
   # Choose what kind of storage to use for this uploader:

@@ -1,12 +1,12 @@
 <div class="form-wrapper">
   <div class="page-top-btns">
-    <%= link_to("/projects/#{params[:project_id]}", class: "page-back") do %>
+    <%= link_to("/recruitments/#{params[:recruitment_id]}", class: "page-back") do %>
       <i class="fas fa-angle-left"></i>
       <p>戻る</p>
     <% end %>
   </div>
   <h1>応募する</h1>
-  <%= form_with model: @entry, url: "/projects/#{params[:project_id]}/entries" do |f| %>
+  <%= form_with model: @entry, url: "/recruitments/#{params[:recruitment_id]}/entries" do |f| %>
     <div class="form">
       <div class="form-item">
         <h2>自己PR</h2>

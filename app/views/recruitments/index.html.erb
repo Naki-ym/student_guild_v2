@@ -1,0 +1,78 @@
+<span class="ham-btn">
+  <i></i>
+  <i></i>
+  <i></i>
+</span>
+<nav class="ham">
+  <ul class="ham-menu">
+    <li class="ham-menu-li"><%= link_to("マイプロジェクト", "recruitments/myrecruitments", {class: "list-btn"}) %></li>
+    <li class="ham-menu-li"><%= link_to("すべて", "/recruitments", {class: "menu-list-textbtn"}) %></li>
+    <% @categories.each do |category| %>
+      <details>
+        <summary><%= category.name %></summary>
+        <ul>
+          <% category.tags.each do |tag| %>
+            <li class="ham-menu-li"><%= link_to(tag.name, "/recruitments?tag=#{tag.id}") %></li>
+          <% end %>
+        </ul>
+      </details>
+    <% end %>
+  </ul>
+</nav>
+
+<div class="recruitments-wrapper">
+  <section class="recruitments-left">
+    <div class="fixed">
+      <div class="menu">
+        <ul class="menu-list">
+          <li><%= link_to("マイプロジェクト", "recruitments/myrecruitments", {class: "list-btn"}) %></li>
+          <li><%= link_to("すべて", "/recruitments", {class: "menu-list-textbtn"}) %></li>
+          <% @categories.each do |category| %>
+            <details>
+              <summary><%= category.name %></summary>
+              <ul>
+                <% category.tags.each do |tag| %>
+                  <li><%= link_to(tag.name, "/recruitments?tag=#{tag.id}") %></li>
+                <% end %>
+              </ul>
+            </details>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="recruitments-right">
+    <% if params[:tag] %>
+      <h1>「<%= @tag.name %>」タグのついたプロジェクト</h1>
+    <% end %>
+    <div class="recruitments-bord">
+      <% @recruitments.each do |recruitment| %>
+        <%= link_to("/recruitments/#{recruitment.id}", class: "recruitment-box") do %>
+          <% if recruitment.image? %>
+            <%= image_tag recruitment.image.url, class:"recruitment-img" %>
+          <% else %>
+            <%= image_tag "image.png", class: "recruitment-img" %>
+          <% end %>
+          <div class="content">
+            <% if recruitment.user.icon? %>
+              <%= image_tag recruitment.user.icon.url, class:"small-usericon" %>
+            <% else %>
+              <%= image_tag "icon.png", class: "small-usericon" %>
+            <% end %>
+            <div class="details">
+              <h2><%= recruitment.name %></h2>
+              <p class="target"><span class="fas fa-search"></span><%= recruitment.target %></p>
+              <p class="overview"><%= recruitment.overview %></p>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+      <div>
+      </div>
+      <div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<%= javascript_pack_tag 'hamburger' %>

@@ -3,12 +3,12 @@
 @import "layout/hamburger";
 @import "setting/variable";
 
-.projects-wrapper {
+.recruitments-wrapper {
   width: 90%;
   margin: 0 auto;
   display: flex;
   overflow: hidden;
-  .projects-left {
+  .recruitments-left {
     width: 22%;
     .fixed {
       background-color: $base-color-10;
@@ -70,7 +70,7 @@
       }
     }
   }
-  .projects-right {
+  .recruitments-right {
     flex: 1;
     padding: 16px;
     padding-left: 24px;
@@ -80,11 +80,11 @@
       padding-bottom: 16px;
     }
   }
-  .projects-bord {
+  .recruitments-bord {
     display: grid;
     gap: 40px 20px;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    .project-box {
+    .recruitment-box {
       background-color: $base-color-10;
       border-radius: 16px;
       box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
@@ -113,7 +113,7 @@
     }
   }
   @include mq(tab) {
-    .projects-left {
+    .recruitments-left {
       width: 40%;
       .fixed {
         width: 32vw;
@@ -123,14 +123,14 @@
   @include mq(sp) {
     display: block;
     width: 100%;
-    .projects-left {
+    .recruitments-left {
       display: none;
     }
-    .projects-bord {
+    .recruitments-bord {
       display: block;
       gap: 0;
       margin-bottom: 80px;
-      .project-box {
+      .recruitment-box {
         display: block;
         margin-bottom: 24px;
       }
@@ -138,7 +138,7 @@
   }
 }
 
-.project-show-box {
+.recruitment-show-box {
   background-color: $base-color-10;
   border-radius: 16px;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
@@ -169,14 +169,14 @@
   }
 }
 
-.project-img {
+.recruitment-img {
   width: 100%;
 }
 
-.project-show-box {
+.recruitment-show-box {
   text-align: left;
   margin: 24px 0;
-  .project-show-data {
+  .recruitment-show-data {
     margin: 16px 0;
   }
 }
