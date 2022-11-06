@@ -40,10 +40,10 @@
       .fav-icon {
         display: flex;
         font-size: 1.5rem;
-        transition: 0.3s;
+        transition: .3s;
         padding: 12px;
         &:hover {
-          opacity: 0.5;
+          opacity: .5;
         }
         i {
           color: $base-color-100;
@@ -53,10 +53,10 @@
       > i {
         color: $base-color-100;
         font-size: 1.5rem;
-        transition: 0.3s;
+        transition: .3s;
         padding: 12px;
         &:hover {
-          opacity: 0.5;
+          opacity: .5;
         }
       }
     }

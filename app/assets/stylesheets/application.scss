@@ -48,7 +48,7 @@ body {
   border: 1px solid $base-color-100;
   font-size: 1.1rem;
   background: $btn-main-color;
-  transition: 0.3s ;
+  transition: .3s ;
   user-select: none;
   &:hover {
     opacity: 1;
@@ -61,12 +61,12 @@ body {
   align-items: center;
   display: flex;
   font-size: 1rem;
-  transition: 0.3s;
+  transition: .3s;
   i {
     padding-right: 4px;
   }
   &:hover {
-    opacity: 0.5;
+    opacity: .5;
   }
 }
 
@@ -88,11 +88,11 @@ body {
     }
     a {
       display: flex;
-      transition: 0.3s ;
+      transition: .3s ;
       line-height: 100%;
       font-size: 1.2rem;
       &:hover {
-        opacity: 0.5;
+        opacity: .5;
       }
       i {
         padding-right: 20px;
@@ -109,23 +109,23 @@ body {
   .page-back {
     display: flex;
     font-size: 1.2rem;
-    transition: 0.3s;
+    transition: .3s;
     i {
       margin-right: 8px;
     }
     &:hover {
-      opacity: 0.5;
+      opacity: .5;
     }
   }
   .page-forward {
     display: flex;
     font-size: 1.2rem;
-    transition: 0.3s;
+    transition: .3s;
     i {
       margin-left: 8px;
     }
     &:hover {
-      opacity: 0.5;
+      opacity: .5;
     }
   }
 }

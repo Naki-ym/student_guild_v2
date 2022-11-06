@@ -24,9 +24,9 @@ header {
     font-weight: normal;
     color: $base-color-10;
     font-weight: bold;
-    transition: 0.3s;
+    transition: .3s;
     &:hover {
-      opacity: 0.5;
+      opacity: .5;
     }
   }
   .big-nav {
@@ -38,9 +38,9 @@ header {
         margin: 0 16px;
         padding: 0 12px;
         font-size: 1.5rem;
-        transition: 0.3s;
+        transition: .3s;
         &:hover {
-          opacity: 0.5;
+          opacity: .5;
         }
         .header-list-item {
           color: $base-color-10;
@@ -55,7 +55,7 @@ header {
             width: 120%;
             height: 1px;
             background: $base-color-10;
-            opacity: 0.7;
+            opacity: .7;
             /*アニメーションの指定*/
             transition: all .3s;
             transform: scale(0, 1);/*X方向0、Y方向1*/

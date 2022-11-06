@@ -33,9 +33,9 @@
         display: inline;
         font-size: 1.5rem;
         margin: 8px;
-        transition: 0.3s ;
+        transition: .3s ;
         &:hover {
-          opacity: 0.5;
+          opacity: .5;
         }
       }
     }
@@ -44,6 +44,9 @@
     flex-direction: column;
     .user-box-right {
       text-align: center;
+      .follow-box {
+        display: block;
+      }
     }
     .user-box-btnarea {
       flex-direction: column;

@@ -29,26 +29,26 @@
             padding-bottom: 20px;
           }
           .menu-list-textbtn {
-            transition: 0.4s;
+            transition: .4s;
             &:hover {
               cursor: pointer;
-              opacity: 0.5;
+              opacity: .5;
             }
           }
           summary {
-            transition: 0.4s;
+            transition: .4s;
             &:hover {
               cursor: pointer;
-              opacity: 0.5;
+              opacity: .5;
             }
           }
           details {
             padding-bottom: 24px;
             li {
               padding: 12px 0 0 16px;
-              transition: 0.4s;
+              transition: .4s;
               &:hover {
-                opacity: 0.5;
+                opacity: .5;
               }
             }
           }
@@ -59,7 +59,7 @@
             color: $base-color-10;
             display: block;
             padding: 4px 8px;
-            transition: 0.4s;
+            transition: .4s;
             width: fit-content;
             &:hover {
               color: $main-color;

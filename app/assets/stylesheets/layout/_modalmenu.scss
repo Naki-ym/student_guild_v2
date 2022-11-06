@@ -3,9 +3,9 @@
 @import "../setting/variable";
 
 .md-btn {
-  transition: 0.3s ;
+  transition: .3s ;
   &:hover {
-    opacity: 0.5;
+    opacity: .5;
   }
 }
 
@@ -42,12 +42,12 @@
       a {
         display: flex;
         font-size: 1.2rem;
-        transition: 0.3s;
+        transition: .3s;
         i {
           padding-right: 12 px;
         }
         &:hover {
-          opacity: 0.5;
+          opacity: .5;
         }
       }
       &:last-child {
