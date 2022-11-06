@@ -5,11 +5,11 @@
       <p>戻る</p>
     <% end %>
   </div>
-  <h1>新規プロジェクト</h1>
+  <h1>新規募集</h1>
   <%= form_with model: @recruitment, url: "/recruitments" do |f| %>
     <div class="form">
       <div class="form-item">
-        <h2>プロジェクト名</h2>
+        <h2>募集の名前</h2>
         <%= f.text_field :name, class: "textbox" %>
       </div>
       <div class="form-item">

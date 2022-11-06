@@ -103,7 +103,7 @@ class RecruitmentsController < ApplicationController
   end
 
   def destroy
-    #このプロジェクトへの応募も削除
+    #この募集への応募も削除
     @recruitment = Recruitment.find_by(id: params[:id])
     @recruitment.discard
     redirect_to("/recruitments/myrecruitments")

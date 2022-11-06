@@ -8,7 +8,7 @@ ja:
       post:
         content: "投稿内容"
       recruitment:
-        name: "プロジェクト名"
+        name: "募集の名前"
         overview: "概要"
         target: "募集対象"
         detail: "詳細"

@@ -5,7 +5,7 @@
 </span>
 <nav class="ham">
   <ul class="ham-menu">
-    <li class="ham-menu-li"><%= link_to("マイプロジェクト", "recruitments/myrecruitments", {class: "list-btn"}) %></li>
+    <li class="ham-menu-li"><%= link_to("自分の募集", "recruitments/myrecruitments", {class: "list-btn"}) %></li>
     <li class="ham-menu-li"><%= link_to("すべて", "/recruitments", {class: "menu-list-textbtn"}) %></li>
     <% @categories.each do |category| %>
       <details>
@@ -25,7 +25,7 @@
     <div class="fixed">
       <div class="menu">
         <ul class="menu-list">
-          <li><%= link_to("マイプロジェクト", "recruitments/myrecruitments", {class: "list-btn"}) %></li>
+          <li><%= link_to("自分の募集", "recruitments/myrecruitments", {class: "list-btn"}) %></li>
           <li><%= link_to("すべて", "/recruitments", {class: "menu-list-textbtn"}) %></li>
           <% @categories.each do |category| %>
             <details>
@@ -43,7 +43,7 @@
   </section>
   <section class="recruitments-right">
     <% if params[:tag] %>
-      <h1>「<%= @tag.name %>」タグのついたプロジェクト</h1>
+      <h1>「<%= @tag.name %>」タグのついた募集</h1>
     <% end %>
     <div class="recruitments-bord">
       <% @recruitments.each do |recruitment| %>
