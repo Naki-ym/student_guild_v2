@@ -43,20 +43,29 @@
         </ul>
       </nav>
       <nav class="sp-nav">
-        <%= link_to("/projects") do %>
-          <i class="fas fa-sticky-note"></i>
-        <% end %>
-        <%= link_to("/posts") do %>
-          <i class="fas fa-hashtag"></i>
-        <% end %>
-        <%= link_to("/chats") do %>
-          <i class="fas fa-envelope"></i>
-        <% end %>
-        <%= link_to("/users/#{current_user.id}") do %>
-          <% if current_user.icon? %>
-            <%= image_tag current_user.icon.url, class:"small-usericon" %>
-          <% else %>
-            <%= image_tag "icon.png", class: "small-usericon" %>
+        <% if current_user %>
+          <%= link_to("/projects") do %>
+            <i class="fas fa-sticky-note"></i>
+          <% end %>
+          <%= link_to("/posts") do %>
+            <i class="fas fa-hashtag"></i>
+          <% end %>
+          <%= link_to("/chats") do %>
+            <i class="fas fa-envelope"></i>
+          <% end %>
+          <%= link_to("/users/#{current_user.id}") do %>
+            <% if current_user.icon? %>
+              <%= image_tag current_user.icon.url, class:"small-usericon" %>
+            <% else %>
+              <%= image_tag "icon.png", class: "small-usericon" %>
+            <% end %>
+          <% end %>
+        <% else %>
+          <%= link_to("/users/sign_up") do %>
+            <p>Signup</p>
+          <% end %>
+          <%= link_to("/users/sign_in") do %>
+            <p>Login</p>
           <% end %>
         <% end %>
       </nav>
