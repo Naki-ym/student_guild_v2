@@ -16,13 +16,13 @@
       justify-content: space-between;
       align-items: center;
       padding-bottom: 12px;
-      font-size: 20px;
+      font-size: 1.2rem;
       .post-user-box {
         display: flex;
         align-items: center;
       }
       i {
-        font-size: 20px
+        font-size: 1.2rem
       }
     }
     .post-content {
@@ -39,7 +39,7 @@
       user-select: none;
       .fav-icon {
         display: flex;
-        font-size: 20px;
+        font-size: 1.5rem;
         transition: 0.3s;
         padding: 12px;
         &:hover {
@@ -52,7 +52,7 @@
       }
       > i {
         color: $base-color-100;
-        font-size: 20px;
+        font-size: 1.5rem;
         transition: 0.3s;
         padding: 12px;
         &:hover {

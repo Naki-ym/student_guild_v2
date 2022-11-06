@@ -11,7 +11,7 @@
     position: sticky;
     height: 100vh;
     top: 0;
-    font-size: 100px;
+    font-size: 6.2rem;
     background-color: $base-color-10;
     color: $base-color-100;
     margin-bottom: 200px;
@@ -24,7 +24,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 48px;
+    font-size: 3rem;
     .box1-content {
       display: flex;
       align-items: center;
@@ -51,7 +51,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 40px;
+    font-size: 2.5rem;
     h1 {
       color: $base-color-90;
       line-height: 1.2;
@@ -63,7 +63,7 @@
     justify-content: center;
     align-items: center;
     flex-flow: column;
-    font-size: 40px;
+    font-size: 2.5rem;
     h1 {
       margin-bottom: 24px;
       color: $base-color-90;
@@ -78,7 +78,7 @@
     justify-content: center;
     align-items: center;
     flex-flow: column;
-    font-size: 24px;
+    font-size: 1.5rem;
     small {
       color: $base-color-10;
     }

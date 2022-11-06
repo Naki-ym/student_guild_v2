@@ -15,13 +15,13 @@
     flex-grow: 1;
     text-align: left;
     h1 {
-      font-size: 32px;
+      font-size: 2rem;
     }
     .follow-box {
       display: flex;
       margin: 8px 0;
       a {
-        font-size: 20px;
+        font-size: 1.2rem;
         margin-right: 8px;
       }
     }
@@ -31,7 +31,7 @@
       justify-content: flex-end;
       .icon {
         display: inline;
-        font-size: 24px;
+        font-size: 1.5rem;
         margin: 8px;
         transition: 0.3s ;
         &:hover {
