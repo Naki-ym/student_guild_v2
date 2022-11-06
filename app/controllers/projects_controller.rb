@@ -13,12 +13,11 @@ class ProjectsController < ApplicationController
   end
 
   def myprojects
-    @allmyprojects = Project.kept.where(user_id: current_user.id).order(created_at: :desc)
-    @projects      = @allmyprojects
+    @projects = Project.kept.where(user_id: current_user.id).order(created_at: :desc)
     if params[:is_published] == "true"
-      @projects = Project.kept.where(user_id: current_user.id, is_published: true).order(created_at: :desc)
+      @projects = @projects.where(is_published: true)
     elsif params[:is_published] == "false"
-      @projects = Project.kept.where(user_id: current_user.id, is_published: false).order(created_at: :desc)
+      @projects = @projects.where(is_published: false)
     end
   end
 

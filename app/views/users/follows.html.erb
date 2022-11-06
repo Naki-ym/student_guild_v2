@@ -7,10 +7,10 @@
   </div>
   <div class="follows_followers_tab">
     <%= link_to("/users/#{@user.id}/follows", class: "target") do %>
-      <p>フォロー <%= @following_users.count %></p>
+      <p>フォロー <%= @user.following_user.count %></p>
     <% end %>
     <%= link_to("/users/#{@user.id}/followers") do %>
-      <p>フォロワー <%= @follower_users.count %></p>
+      <p>フォロワー <%= @user.follower_user.count %></p>
     <% end %>
   </div>
   <h1>フォローしているユーザー</h1>

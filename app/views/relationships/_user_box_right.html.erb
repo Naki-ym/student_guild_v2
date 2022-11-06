@@ -1,10 +1,10 @@
 <h1><%= @user.name %></h1>
 <div class="follow-box">
   <%= link_to("/users/#{@user.id}/follows") do %>
-    <p>フォロー:<%= @following_users.count %></p>
+    <p>フォロー:<%= @user.following_user.count %></p>
   <% end %>
   <%= link_to("/users/#{@user.id}/followers") do %>
-    <p>フォロワー:<%= @follower_users.count %></p>
+    <p>フォロワー:<%= @user.follower_user.count %></p>
   <% end %>
 </div>
 <div class="user-box-btnarea">
