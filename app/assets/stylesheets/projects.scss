@@ -1,0 +1,15 @@
+@charset "utf-8";
+@import "function/mediaquery";
+@import "layout/form";
+@import "layout/two_column";
+@import "layout/usericon";
+@import "setting/variable";
+
+.project-right.project-show {
+  padding: 40px;
+  text-align: center;
+}
+.project-post-wrapper {
+  width: 90%;
+  margin: 0 auto;
+}

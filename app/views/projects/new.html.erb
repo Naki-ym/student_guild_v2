@@ -1,0 +1,24 @@
+<div class="form-wrapper">
+  <div class="page-top-btns">
+    <%= link_to("/projects", class: "page-back") do %>
+      <i class="fas fa-angle-left"></i>
+      <p>戻る</p>
+    <% end %>
+  </div>
+  <h1>新規プロジェクト</h1>
+  <%= form_with model: @project, url: "/projects" do |f| %>
+    <div class="form">
+      <div class="form-item">
+        <h2>プロジェクト名</h2>
+        <%= f.text_field :name, class: "textbox" %>
+      </div>
+      <div class="form-item">
+        <h2>概要</h2>
+        <%= f.text_area :about, class: "textarea" %>
+      </div>
+      <div class="btns">
+        <%= f.submit "作成", class: "btn" %>
+      </div>
+    </div>
+  <% end %>
+</div>

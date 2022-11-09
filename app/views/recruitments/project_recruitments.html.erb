@@ -5,18 +5,10 @@
 </span>
 <nav class="ham">
   <ul class="ham-menu">
-    <li class="ham-menu-li"><%= link_to("自分の募集", "recruitments/myrecruitments", {class: "list-btn"}) %></li>
-    <li class="ham-menu-li"><%= link_to("すべて", "/recruitments", {class: "menu-list-textbtn"}) %></li>
-    <% @categories.each do |category| %>
-      <details>
-        <summary><%= category.name %></summary>
-        <ul>
-          <% category.tags.each do |tag| %>
-            <li class="ham-menu-li"><%= link_to(tag.name, "/recruitments?tag=#{tag.id}") %></li>
-          <% end %>
-        </ul>
-      </details>
-    <% end %>
+    <li class="ham-menu-li"><%= link_to("< プロジェクト一覧", "/projects") %></li>
+    <li class="ham-menu-li"><%= link_to("ホーム", "/projects/#{params[:project_id]}") %></li>
+    <li class="ham-menu-li"><%= link_to("掲示板", "#") %></li>
+    <li class="ham-menu-li"><%= link_to("案件", "/projects/#{params[:project_id]}/recruitments") %></li>
   </ul>
 </nav>
 
@@ -25,30 +17,21 @@
     <div class="fixed">
       <div class="menu">
         <ul class="menu-list">
-          <li><%= link_to("すべて", "/recruitments", {class: "menu-list-textbtn"}) %></li>
-          <% @categories.each do |category| %>
-            <details>
-              <summary><%= category.name %></summary>
-              <ul>
-                <% category.tags.each do |tag| %>
-                  <li><%= link_to(tag.name, "/recruitments?tag=#{tag.id}") %></li>
-                <% end %>
-              </ul>
-            </details>
-          <% end %>
+          <li><%= link_to("< プロジェクト一覧", "/projects") %></li>
+          <li><%= link_to("ホーム", "/projects/#{params[:project_id]}") %></li>
+          <li><%= link_to("掲示板", "#") %></li>
+          <li><%= link_to("案件", "/projects/#{params[:project_id]}/recruitments") %></li>
         </ul>
       </div>
     </div>
   </section>
   <section class="two-col-right">
-    <% if params[:tag] %>
-      <h1>「<%= @tag.name %>」タグのついた募集</h1>
-    <% end %>
+    <h1>案件一覧</h1>
     <div class="recruitments-bord">
       <% @recruitments.each do |recruitment| %>
-        <%= link_to("/recruitments/#{recruitment.id}", class: "recruitment-box") do %>
+        <%= link_to("/projects/#{params[:project_id]}/recruitments/#{recruitment.id}", class: "recruitment-box") do %>
           <% if recruitment.image? %>
-            <%= image_tag recruitment.image.url, class:"recruitment-img" %>
+            <%= image_tag recruitment.image.url, class: "recruitment-img" %>
           <% else %>
             <%= image_tag "image.png", class: "recruitment-img" %>
           <% end %>

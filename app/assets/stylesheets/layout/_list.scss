@@ -1,0 +1,27 @@
+@charset "utf-8";
+@import "usericon";
+@import "../function/mediaquery";
+@import "../setting/variable";
+
+.list {
+  background:  $base-color-10;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  margin-top: 12px;
+  padding: 8px 16px;
+  .li-tile {
+    border-bottom: 1px solid $accent-color-line;
+    font-size: 1.1rem;
+    text-align:  left;
+    a {
+      padding: 24px 16px;
+      display: flex;
+      align-items: center;
+      &:hover {
+        background-color: $base-color-17;
+      }
+    }
+    &:last-of-type {
+      border: none;
+    }
+  }
+}

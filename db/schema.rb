@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_23_125237) do
+ActiveRecord::Schema.define(version: 2022_11_06_133638) do
+
+  create_table "affiliations", force: :cascade do |t|
+    t.integer "project_id", null: false
+    t.integer "user_id", null: false
+    t.boolean "is_master", default: false, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "discarded_at"
+    t.index ["discarded_at"], name: "index_affiliations_on_discarded_at"
+    t.index ["project_id"], name: "index_affiliations_on_project_id"
+    t.index ["user_id"], name: "index_affiliations_on_user_id"
+  end
 
   create_table "entries", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -55,8 +67,18 @@ ActiveRecord::Schema.define(version: 2022_10_23_125237) do
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
+  create_table "projects", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "about", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "discarded_at"
+    t.index ["discarded_at"], name: "index_projects_on_discarded_at"
+  end
+
   create_table "recruitments", force: :cascade do |t|
     t.integer "user_id", null: false
+    t.integer "project_id", null: false
     t.string "name", null: false
     t.string "overview", null: false
     t.string "target", null: false
@@ -68,6 +90,7 @@ ActiveRecord::Schema.define(version: 2022_10_23_125237) do
     t.datetime "discarded_at"
     t.string "image", null: false
     t.index ["discarded_at"], name: "index_recruitments_on_discarded_at"
+    t.index ["project_id"], name: "index_recruitments_on_project_id"
     t.index ["tag_id"], name: "index_recruitments_on_tag_id"
     t.index ["user_id"], name: "index_recruitments_on_user_id"
   end
@@ -134,6 +157,8 @@ ActiveRecord::Schema.define(version: 2022_10_23_125237) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "affiliations", "projects"
+  add_foreign_key "affiliations", "users"
   add_foreign_key "entries", "recruitments"
   add_foreign_key "entries", "users"
   add_foreign_key "messages", "rooms"
@@ -141,6 +166,7 @@ ActiveRecord::Schema.define(version: 2022_10_23_125237) do
   add_foreign_key "post_likes", "posts"
   add_foreign_key "post_likes", "users"
   add_foreign_key "posts", "users"
+  add_foreign_key "recruitments", "projects"
   add_foreign_key "recruitments", "tags"
   add_foreign_key "recruitments", "users"
   add_foreign_key "relationships", "users", column: "followed_id"

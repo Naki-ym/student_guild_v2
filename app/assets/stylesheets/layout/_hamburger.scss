@@ -1,5 +1,6 @@
 @charset "utf-8";
 @import "function/mediaquery";
+@import "setting/size";
 @import "setting/variable";
 
 .ham-btn {
@@ -50,7 +51,7 @@
   position: fixed;
   top: 0;
   right: 0;
-  bottom: 60px;
+  bottom: $header-height;
   left: 0;
   background-color: $main-color;
   font-size: 1.1rem;

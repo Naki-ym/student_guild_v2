@@ -2,6 +2,7 @@ class Recruitment < ApplicationRecord
   include Discard::Model
 
   validates :user_id, {presence: true}
+  validates :project_id, {presence: true}
   validates :tag_id, {presence: true}
   validates :name, {presence: true, length: {maximum: 200}}
   validates :overview, {presence: true, length: {maximum: 200}}
@@ -9,6 +10,7 @@ class Recruitment < ApplicationRecord
   validates :detail, {presence: true}
 
   belongs_to :user
+  belongs_to :project
   belongs_to :tag
   has_many :entries
 

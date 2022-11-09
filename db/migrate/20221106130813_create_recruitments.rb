@@ -2,6 +2,7 @@ class CreateRecruitments < ActiveRecord::Migration[6.1]
   def change
     create_table :recruitments do |t|
       t.references :user, null: false, foreign_key: true
+      t.references :project, null: false, foreign_key: true
       t.string :name, null: false
       t.string :overview, null: false
       t.string :target, null: false

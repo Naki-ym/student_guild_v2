@@ -10,6 +10,8 @@ class User < ApplicationRecord
   has_many :room_users
   has_many :rooms, through: :room_users
   has_many :messages
+  has_many :affiliations
+  has_many :projects, through: :affiliations
   has_many :recruitments
   has_many :entries
 
@@ -42,6 +44,13 @@ class User < ApplicationRecord
 
   def followings
     return self.following_user
+  end
+
+  def project_master?(project)
+    @affiliation = Affiliation.kept.find_by(project_id: project.id, user_id: self.id)
+    if @affiliation.is_master
+      return true
+    end
   end
 
   #所属している全ての個人チャットを返す

@@ -19,9 +19,17 @@ Rails.application.routes.draw do
     resource :post_likes, only: [:create, :destroy]
   end
 
-  resources :recruitments do
+  resources :projects do
+    resources :recruitments, only: [:create, :new] do
+      root "recruitments#project_recruitments"
+      member do
+        root "recruitments#show", as: "show"
+      end
+    end
+  end
+  
+  resources :recruitments, only: [:index, :show, :edit, :update, :destroy] do
     collection do
-      get :myrecruitments
       get :dynamic_tag
     end
     member do

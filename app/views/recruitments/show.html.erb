@@ -1,7 +1,7 @@
 <div class="wrapper">
   <div class="page-top-btns">
-    <% if @recruitment.user == current_user %>
-      <%= link_to("/recruitments/myrecruitments", class: "page-back") do %>
+    <% if params[:project_id] %>
+      <%= link_to("/projects/#{@recruitment.project.id}/recruitments", class: "page-back") do %>
         <i class="fas fa-angle-left"></i>
         <p>戻る</p>
       <% end %>

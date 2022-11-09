@@ -1,0 +1,9 @@
+one:
+  id: 1
+  name: ○○高校MV作成
+  about: MVを作成する
+
+two:
+  id: 2
+  name: 新規SNSサービス開発
+  about: SNS開発

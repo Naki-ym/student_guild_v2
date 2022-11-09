@@ -12,8 +12,9 @@ class RecruitmentsController < ApplicationController
     end
   end
 
-  def myrecruitments
-    @recruitments = Recruitment.kept.where(user_id: current_user.id).order(created_at: :desc)
+  def project_recruitments
+    @project = Project.kept.find_by(id: params[:project_id])
+    @recruitments = @project.recruitments
     if params[:is_published] == "true"
       @recruitments = @recruitments.where(is_published: true)
     elsif params[:is_published] == "false"

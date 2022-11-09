@@ -7,6 +7,7 @@
 @import "base/reset";
 @import "function/mediaquery";
 @import "layout/table";
+@import "setting/size";
 @import "setting/variable";
 
 * {
@@ -158,7 +159,7 @@ img {
   display: none;
   @include mq(sp) {
     display: block;
-    height: 60px;
+    height: $header-height;
   }
 }
 

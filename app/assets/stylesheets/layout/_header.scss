@@ -1,5 +1,6 @@
 @charset "utf-8";
 @import "../function/mediaquery";
+@import "../setting/size";
 @import "../setting/variable";
 
 header {
@@ -7,7 +8,7 @@ header {
   box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
   display: flex;
   width: 100%;
-  height: 60px;
+  height: $header-height;
   padding-left: 4%;
   position: fixed;
   align-items: center;
@@ -83,7 +84,7 @@ header {
   }
   @include mq(sp) {
     bottom: 0;
-    height: 60px;
+    height: $header-height;
     position: fixed;
     .header-logo {
       display: none;
