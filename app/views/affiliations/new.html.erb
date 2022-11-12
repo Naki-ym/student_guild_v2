@@ -1,0 +1,29 @@
+<div class="form-wrapper">
+  <div class="page-top-btns">
+    <%= link_to("/projects/#{params[:project_id]}", class: "page-back") do %>
+      <i class="fas fa-angle-left"></i>
+      <p>戻る</p>
+    <% end %>
+  </div>
+  <h1>ユーザー追加</h1>
+  <%= form_tag("/projects/#{params[:project_id]}/affiliations") do %>
+    <div class="form">
+      <div class="form-item">
+        <h2>追加するユーザー</h2>
+        <div class="user-list">
+          <ul>
+            <% @users.each do |user| %>
+              <li>
+                <input type="checkbox" id="checkbox<%= user.id %>" name="users[]" value="<%= user.id %>">
+                <label for="checkbox<%= user.id %>"><%= user.name %></label>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="btns">
+      <input type="submit" value="追加" class="btn">
+    </div>
+  <% end %>
+</div>

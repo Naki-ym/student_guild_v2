@@ -1,12 +1,18 @@
 class ProjectsController < ApplicationController
+  #ログインしていないユーザーがアクセスできない
+  before_action :authenticate_user!
+
   def index
   end
+
   def show
     @project = Project.kept.find_by(id: params[:id])
   end
+
   def new
     @project = Project.new
   end
+
   def create
     @project = Project.new(project_params)
     if @project.save
@@ -21,19 +27,25 @@ class ProjectsController < ApplicationController
       render("projects/new")
     end
   end
+
   def edit
     @project = Project.kept.find_by(id: params[:id])
   end
+
   def update
     @project = Project.kept.find_by(id: params[:id])
     if @project.update(project_params)
       flash[:notice] = "変更を保存しました"
-      redirect_to("/projects/#{@post.id}")
+      redirect_to("/projects/#{@project.id}")
     else
       render("projects/edit")
     end
   end
+
   def destroy
+    @project = Project.find_by(id: params[:id])
+    @project.discard
+    redirect_to("/projects")
   end
 
   private

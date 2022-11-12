@@ -42,15 +42,20 @@ class User < ApplicationRecord
     following_user.include?(user)
   end
 
+  # フォローしているユーザー
   def followings
     return self.following_user
   end
 
   def project_master?(project)
-    @affiliation = Affiliation.kept.find_by(project_id: project.id, user_id: self.id)
+    @affiliation = Affiliation.find_by(project_id: project.id, user_id: self.id)
     if @affiliation.is_master
       return true
     end
+  end
+
+  def affiliation(project)
+    return self.affiliations.find_by(project_id: project.id)
   end
 
   #所属している全ての個人チャットを返す

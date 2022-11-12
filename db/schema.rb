@@ -18,8 +18,6 @@ ActiveRecord::Schema.define(version: 2022_11_06_133638) do
     t.boolean "is_master", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.datetime "discarded_at"
-    t.index ["discarded_at"], name: "index_affiliations_on_discarded_at"
     t.index ["project_id"], name: "index_affiliations_on_project_id"
     t.index ["user_id"], name: "index_affiliations_on_user_id"
   end

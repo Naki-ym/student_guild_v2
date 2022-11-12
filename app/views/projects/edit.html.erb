@@ -1,0 +1,32 @@
+<% if @project.errors.full_messages %>
+  <% @project.errors.full_messages.each do |message| %>
+    <div class="error-msg">
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<section class="form-wrapper">
+  <div class="page-top-btns">
+    <%= link_to("/projects/#{params[:id]}", class: "page-back") do %>
+      <i class="fas fa-angle-left"></i>
+      <p>戻る</p>
+    <% end %>
+  </div>
+  <h1>募集内容の編集</h1>
+  <%= form_with model: @project, url: "/projects/#{@project.id}" do |f| %>
+    <div class="form">
+      <div class="form-item">
+        <h2>プロジェクト名</h2>
+        <%= f.text_field :name, class: "textbox" %>
+      </div>
+      <div class="form-item">
+        <h2>概要</h2>
+        <%= f.text_area :about, class: "textarea" %>
+      </div>
+      <div class="btns">
+        <%= f.submit "保存", class: "btn" %>
+      </div>
+    </div>
+  <% end %>
+</section>

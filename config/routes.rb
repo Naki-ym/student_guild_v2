@@ -20,6 +20,11 @@ Rails.application.routes.draw do
   end
 
   resources :projects do
+    resources :affiliations, only: [:index, :show, :create, :new, :destroy] do
+      member do
+        patch :grant_master
+      end
+    end
     resources :recruitments, only: [:create, :new] do
       root "recruitments#project_recruitments"
       member do

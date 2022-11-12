@@ -29,11 +29,15 @@
     <h2><%= @project.name %></h2>
     <%= simple_format(@project.about, class: "project-about") %>
     <ul class="list">
+      <li class="li-tile"><%= link_to("メンバー一覧", "/projects/#{params[:id]}/affiliations") %></li>
+      <li class="li-tile"><%= link_to("メンバー招待", "/projects/#{params[:id]}/affiliations/new") %></li>
       <% if current_user.project_master?(@project) %>
         <li class="li-tile"><%= link_to("プロジェクト情報編集", "/projects/#{params[:id]}/edit") %></li>
+        <li class="li-tile">
+          <%= link_to("プロジェクト削除", "/projects/#{params[:id]}",
+            data: { confirm: "本当にアカウントを削除しますか？" }, method: :delete) %>
+        </li>
       <% end %>
-      <li class="li-tile"><%= link_to("メンバー一覧", "#") %></li>
-      <li class="li-tile"><%= link_to("メンバー招待", "#") %></li>
     </ul>
   </section>
 </div>
