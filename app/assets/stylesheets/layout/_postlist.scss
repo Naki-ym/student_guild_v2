@@ -8,55 +8,59 @@
     background: $base-color-10;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     border-radius: 4px;
+    display: flex;
     margin-bottom: 20px;
-    padding: 12px 20px 4px;
+    padding: 12px 20px;
     width: 100%;
-    .post-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-bottom: 12px;
-      font-size: 1.2rem;
-      .post-user-box {
-        display: flex;
-        align-items: center;
-      }
-      i {
-        font-size: 1.2rem
-      }
-    }
-    .post-content {
-      font-size: 1.2rem;
-      line-height: 1.2em;
-      padding: 8px 16px;
-      text-align: left;
+    .post-detail {
       width: 100%;
-      word-wrap: break-word;
-    }
-    .post-items {
-      display: flex;
-      justify-content: flex-end;
-      user-select: none;
-      .fav-icon {
+      .post-top {
         display: flex;
-        font-size: 1.5rem;
-        transition: .3s;
-        padding: 12px;
-        &:hover {
-          opacity: .5;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 16px;
+        font-size: 1.2rem;
+        .post-user-box {
+          display: flex;
+          align-items: center;
         }
         i {
-          color: $base-color-100;
-          padding-right: 4px;
+          font-size: 1.2rem
         }
       }
-      > i {
-        color: $base-color-100;
-        font-size: 1.5rem;
-        transition: .3s;
-        padding: 12px;
-        &:hover {
-          opacity: .5;
+      .post-content {
+        font-size: 1.2rem;
+        line-height: 1.2em;
+        padding-bottom: 16px;
+        text-align: left;
+        width: 100%;
+        word-wrap: break-word;
+      }
+      .post-items {
+        display: flex;
+        justify-content: flex-end;
+        user-select: none;
+        .fav-icon {
+          display: flex;
+          font-size: 1.5rem;
+          transition: .3s;
+          padding: 0 12px;
+          &:hover {
+            opacity: .5;
+          }
+          i {
+            color: $base-color-100;
+            padding-right: 4px;
+          }
+        }
+        > i {
+          color: $base-color-100;
+          font-size: 1.5rem;
+          transition: .3s;
+          padding: 12px;
+          &:hover {
+            opacity: .5;
+          }
         }
       }
     }
