@@ -12,6 +12,7 @@ class User < ApplicationRecord
   has_many :messages
   has_many :affiliations
   has_many :projects, through: :affiliations
+  has_many :project_posts, dependent: :destroy
   has_many :recruitments
   has_many :entries
 

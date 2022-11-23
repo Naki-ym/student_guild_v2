@@ -5,8 +5,9 @@ class Project < ApplicationRecord
   validates :about, {presence: true}
 
   has_many :affiliations
-  has_many :users, through: :affiliations
+  has_many :project_posts
   has_many :recruitments
+  has_many :users, through: :affiliations
 
   def join?(user)
     if self.users.find_by(id: user.id)

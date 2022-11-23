@@ -1,0 +1,20 @@
+<div class="form-wrapper">
+  <div class="page-top-btns">
+    <%= link_to("/projects/#{params[:project_id]}/project_posts/", class: "page-back") do %>
+      <i class="fas fa-angle-left"></i>
+      <p>戻る</p>
+    <% end %>
+  </div>
+  <h1>投稿内容の編集</h1>
+  <%= form_with model: @pj_post, url: "/projects/#{params[:project_id]}/project_posts/#{@pj_post.id}" do |f| %>
+    <div class="form">
+      <div class="form-item">
+        <h2>内容</h2>
+        <%= f.text_area :content, class: "textarea" %>
+      </div>
+    </div>
+    <div class="btns">
+      <%= f.submit "保存", class: "btn" %>
+    </div>
+  <% end %>
+</div>

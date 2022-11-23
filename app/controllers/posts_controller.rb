@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @post  = Post.new
+    @post = Post.new
     case params[:search]
     when nil
       @followings_id = []

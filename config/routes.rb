@@ -25,7 +25,7 @@ Rails.application.routes.draw do
         patch :grant_master
       end
     end
-    resources :project_posts
+    resources :project_posts, only: [:index, :create, :new, :edit, :update, :destroy]
     resources :recruitments, only: [:create, :new] do
       root "recruitments#project_recruitments"
     end
