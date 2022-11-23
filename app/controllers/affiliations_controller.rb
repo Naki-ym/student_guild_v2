@@ -1,19 +1,18 @@
 class AffiliationsController < ApplicationController
   #ログインしていないユーザーがアクセスできない
   before_action :authenticate_user!
+  #プロジェクトに所属していないとアクセスできない
+  before_action :project_member
 
   def index
-    @project = Project.kept.find_by(id: params[:project_id])
   end
 
   def new
-    @project = Project.kept.find_by(id: params[:project_id])
     @users   = current_user.following_user - @project.users
   end
 
   def show
     @affiliation = Affiliation.find_by(id: params[:id])
-    @project     = Project.kept.find_by(id: params[:project_id])
   end
 
   def create
@@ -26,7 +25,6 @@ class AffiliationsController < ApplicationController
           is_master: false
         )
         unless @affiliation.save
-          @project = Project.kept.find_by(id: params[:project_id])
           @users = current_user.following_user - @project.users
           render("affiliations/new")
           exit
@@ -35,7 +33,6 @@ class AffiliationsController < ApplicationController
       flash[:notice] = "追加しました"
       redirect_to("/projects/#{params[:project_id]}")
     else
-      @project = Project.kept.find_by(id: params[:project_id])
       @users = current_user.following_user - @project.users
       render("affiliations/new")
     end

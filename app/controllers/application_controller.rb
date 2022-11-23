@@ -8,6 +8,21 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def project_member
+    if params[:project_id]
+      @project = Project.kept.find_by(id: params[:project_id])
+    else
+      @project = Project.kept.find_by(id: params[:id])
+    end
+    if !@project
+      flash[:notice] = "プロジェクトが存在しません"
+      redirect_to("/projects")
+    elsif !@project.users.find_by(id: current_user.id)
+      flash[:notice] = "このプロジェクトに参加しているユーザーのみアクセスできます"
+      redirect_to("/projects")
+    end
+  end
+
   private
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up,keys:[:name, :email, :icon, :icon_cache])

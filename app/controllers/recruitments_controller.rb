@@ -1,20 +1,30 @@
 class RecruitmentsController < ApplicationController
   #ログインしていないユーザーがアクセスできない
   before_action :authenticate_user!
+  #プロジェクトに所属していないとアクセスできない
+  before_action :project_member, only: [:project_recruitments, :new, :create]
 
   def index
     @categories = TagCategory.kept.order(created_at: :asc)
+    my_project_recruitments = nil
+    current_user.projects.each do |pj|
+      if my_project_recruitments
+        my_project_recruitments += pj.recruitments
+      else
+        my_project_recruitments = pj.recruitments
+      end
+    end
     if params[:tag]
       @tag = Tag.kept.find_by(id: params[:tag].to_i)
-      @recruitments = @tag.recruitments(current_user.id)
+      @recruitments = @tag.recruitments(current_user.id) - my_project_recruitments
     else
-      @recruitments = Recruitment.kept.where.not(user_id: current_user.id).where(is_published: true).order(created_at: :desc)
+      @recruitments = Recruitment.kept.where.not(user_id: current_user.id).where(is_published: true).order(created_at: :desc) - my_project_recruitments
     end
   end
 
   def project_recruitments
     @project = Project.kept.find_by(id: params[:project_id])
-    @recruitments = @project.recruitments
+    @recruitments = @project.recruitments.kept.order(created_at: :desc)
     if params[:is_published] == "true"
       @recruitments = @recruitments.where(is_published: true)
     elsif params[:is_published] == "false"
@@ -23,9 +33,9 @@ class RecruitmentsController < ApplicationController
   end
 
   def new
-    @categories = TagCategory.kept.order(created_at: :asc)
-    @recruitment    = Recruitment.new
-    @tags       = Tag.kept.all.order(created_at: :asc)
+    @categories  = TagCategory.kept.order(created_at: :asc)
+    @recruitment = Recruitment.new
+    @tags        = Tag.kept.all.order(created_at: :asc)
   end
 
   def dynamic_tag
@@ -40,6 +50,7 @@ class RecruitmentsController < ApplicationController
   def create
     @recruitment = Recruitment.new(
       user_id:     recruitment_params["user_id"],
+      project_id:  params[:project_id],
       name:        recruitment_params["name"],
       overview:    recruitment_params["overview"],
       target:      recruitment_params["target"],
@@ -49,7 +60,7 @@ class RecruitmentsController < ApplicationController
       image_cache: recruitment_params["image_cache"]
     )
     if params[:tag] != "---" and @recruitment.save
-      redirect_to("/recruitments/myrecruitments")
+      redirect_to("/projects/#{params[:project_id]}/recruitments")
     else
       @categories = TagCategory.kept.order(created_at: :asc)
       @tags = Tag.all.order(created_at: :asc)
@@ -93,21 +104,21 @@ class RecruitmentsController < ApplicationController
     @recruitment              = Recruitment.kept.find_by(id: params[:id])
     @recruitment.is_published = true
     @recruitment.save
-    redirect_to("/recruitments/myrecruitments")
+    redirect_to("/projects/#{@recruitment.project_id}/recruitments")
   end
 
   def unpublish
     @recruitment              = Recruitment.kept.find_by(id: params[:id])
     @recruitment.is_published = false
     @recruitment.save
-    redirect_to("/recruitments/myrecruitments")
+    redirect_to("/projects/#{@recruitment.project_id}/recruitments")
   end
 
   def destroy
-    #この募集への応募も削除
+    #この案件への応募も削除
     @recruitment = Recruitment.find_by(id: params[:id])
     @recruitment.discard
-    redirect_to("/recruitments/myrecruitments")
+    redirect_to("/projects/#{@recruitment.project_id}/recruitments")
   end
 
   private

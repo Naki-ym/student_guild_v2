@@ -7,7 +7,7 @@
   <ul class="ham-menu">
     <li class="ham-menu-li"><%= link_to("< プロジェクト一覧", "/projects") %></li>
     <li class="ham-menu-li"><%= link_to("トップ", "/projects/#{params[:project_id]}") %></li>
-    <li class="ham-menu-li"><%= link_to("掲示板", "/projects/#{params[:project_id]}/project_posts") %></li>
+    <li class="ham-menu-li"><%= link_to("掲示板", "/projects/#{params[:id]}/project_posts") %></li>
     <li class="ham-menu-li"><%= link_to("案件", "/projects/#{params[:project_id]}/recruitments") %></li>
   </ul>
 </nav>
@@ -26,23 +26,8 @@
     </div>
   </section>
   <section class="two-col-right">
-    <h2><%= @affiliation.user.name %></h2>
-    <div class="btns">
-      <% if @affiliation.is_master %>
-        <p>管理者です</p>
-      <% else %>
-        <% if current_user.project_master?(@project) && @affiliation.user != current_user %>
-          <%= button_to "管理者権限を付与する",
-            "/projects/#{params[:project_id]}/affiliations/#{params[:id]}/grant_master",
-            {method: :patch, data: { confirm: "管理者権限を付与しますか？" }, class: "btn"}
-          %>
-          <%= button_to "プロジェクトメンバーから除外する",
-            "/projects/#{params[:project_id]}/affiliations/#{params[:id]}",
-            {method: :delete, data: { confirm: "プロジェクトメンバーから除外しますか？" }, class: "btn"}
-          %>
-        <% end %>
-      <% end %>
-    </div>
+    
   </section>
 </div>
+
 <%= javascript_pack_tag 'hamburger' %>

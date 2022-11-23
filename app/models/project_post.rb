@@ -1,0 +1,2 @@
+class ProjectPost < ApplicationRecord
+end

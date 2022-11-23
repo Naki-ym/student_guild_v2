@@ -13,11 +13,11 @@
       <p>戻る</p>
     <% end %>
   </div>
-  <h1>募集内容の編集</h1>
+  <h1>案件の内容の編集</h1>
   <%= form_with model: @recruitment, url: "/recruitments/#{@recruitment.id}" do |f| %>
     <div class="form">
       <div class="form-item">
-        <h2>募集の名前</h2>
+        <h2>案件の名前</h2>
         <%= f.text_field :name, class: "textbox" %>
       </div>
       <div class="form-item">

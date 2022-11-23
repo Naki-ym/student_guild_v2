@@ -6,6 +6,7 @@
 @charset "utf-8";
 @import "base/reset";
 @import "function/mediaquery";
+@import "layout/box_top_area";
 @import "layout/table";
 @import "setting/size";
 @import "setting/variable";
@@ -34,6 +35,7 @@ body {
 .btns {
   margin: 0 auto;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   @include mq(sp) {
     width: 100%;
@@ -51,6 +53,7 @@ body {
   background: $btn-main-color;
   transition: .3s ;
   user-select: none;
+  white-space: nowrap;
   &:hover {
     opacity: 1;
     color: $base-color-10;

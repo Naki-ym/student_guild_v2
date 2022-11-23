@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_06_133638) do
+ActiveRecord::Schema.define(version: 2022_11_14_235328) do
 
   create_table "affiliations", force: :cascade do |t|
     t.integer "project_id", null: false
@@ -63,6 +63,18 @@ ActiveRecord::Schema.define(version: 2022_11_06_133638) do
     t.datetime "discarded_at"
     t.index ["discarded_at"], name: "index_posts_on_discarded_at"
     t.index ["user_id"], name: "index_posts_on_user_id"
+  end
+
+  create_table "project_posts", force: :cascade do |t|
+    t.string "content", null: false
+    t.integer "project_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "discarded_at"
+    t.index ["discarded_at"], name: "index_project_posts_on_discarded_at"
+    t.index ["project_id"], name: "index_project_posts_on_project_id"
+    t.index ["user_id"], name: "index_project_posts_on_user_id"
   end
 
   create_table "projects", force: :cascade do |t|
@@ -164,6 +176,8 @@ ActiveRecord::Schema.define(version: 2022_11_06_133638) do
   add_foreign_key "post_likes", "posts"
   add_foreign_key "post_likes", "users"
   add_foreign_key "posts", "users"
+  add_foreign_key "project_posts", "projects"
+  add_foreign_key "project_posts", "users"
   add_foreign_key "recruitments", "projects"
   add_foreign_key "recruitments", "tags"
   add_foreign_key "recruitments", "users"

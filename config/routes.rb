@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   end
   post "chats/:id" => "chats#create_individual", as: "chats_individual"
 
-  resources :posts do
+  resources :posts, only: [:index, :show, :create, :edit, :update, :destroy] do
     resource :post_likes, only: [:create, :destroy]
   end
 
@@ -25,14 +25,13 @@ Rails.application.routes.draw do
         patch :grant_master
       end
     end
+    resources :project_posts
     resources :recruitments, only: [:create, :new] do
       root "recruitments#project_recruitments"
-      member do
-        root "recruitments#show", as: "show"
-      end
     end
+    get "recruitments/:id" => "recruitments#show", as: "show"
   end
-  
+
   resources :recruitments, only: [:index, :show, :edit, :update, :destroy] do
     collection do
       get :dynamic_tag

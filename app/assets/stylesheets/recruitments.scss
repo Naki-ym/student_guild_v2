@@ -54,6 +54,8 @@
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   overflow: hidden;
   padding: 20px;
+  text-align: left;
+  width: 100%;
   h2 {
     font-size: 1.6rem;
     line-height: 1.3em;
@@ -81,12 +83,4 @@
 
 .recruitment-img {
   width: 100%;
-}
-
-.recruitment-show-box {
-  text-align: left;
-  margin: 24px 0;
-  .recruitment-show-data {
-    margin: 16px 0;
-  }
 }

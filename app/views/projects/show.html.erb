@@ -6,8 +6,8 @@
 <nav class="ham">
   <ul class="ham-menu">
     <li class="ham-menu-li"><%= link_to("< プロジェクト一覧", "/projects") %></li>
-    <li class="ham-menu-li"><%= link_to("ホーム", "/projects/#{params[:id]}") %></li>
-    <li class="ham-menu-li"><%= link_to("掲示板", "#") %></li>
+    <li class="ham-menu-li"><%= link_to("トップ", "/projects/#{params[:id]}") %></li>
+    <li class="ham-menu-li"><%= link_to("掲示板", "/projects/#{params[:id]}/project_posts") %></li>
     <li class="ham-menu-li"><%= link_to("案件", "/projects/#{params[:id]}/recruitments") %></li>
   </ul>
 </nav>
@@ -18,8 +18,8 @@
       <div class="menu">
         <ul class="menu-list">
           <li><%= link_to("< プロジェクト一覧", "/projects") %></li>
-          <li><%= link_to("ホーム", "/projects/#{params[:id]}") %></li>
-          <li><%= link_to("掲示板", "#") %></li>
+          <li><%= link_to("トップ", "/projects/#{params[:id]}") %></li>
+          <li><%= link_to("掲示板", "/projects/#{params[:id]}/project_posts") %></li>
           <li><%= link_to("案件", "/projects/#{params[:id]}/recruitments") %></li>
         </ul>
       </div>
@@ -29,8 +29,7 @@
     <h2><%= @project.name %></h2>
     <%= simple_format(@project.about, class: "project-about") %>
     <ul class="list">
-      <li class="li-tile"><%= link_to("メンバー一覧", "/projects/#{params[:id]}/affiliations") %></li>
-      <li class="li-tile"><%= link_to("メンバー招待", "/projects/#{params[:id]}/affiliations/new") %></li>
+      <li class="li-tile"><%= link_to("メンバー", "/projects/#{params[:id]}/affiliations") %></li>
       <% if current_user.project_master?(@project) %>
         <li class="li-tile"><%= link_to("プロジェクト情報編集", "/projects/#{params[:id]}/edit") %></li>
         <li class="li-tile">

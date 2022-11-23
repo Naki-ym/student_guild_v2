@@ -1,15 +1,15 @@
 <div class="form-wrapper">
   <div class="page-top-btns">
-    <%= link_to("/recruitments/myrecruitments", class: "page-back") do %>
+    <%= link_to("/projects/#{params[:project_id]}/recruitments", class: "page-back") do %>
       <i class="fas fa-angle-left"></i>
       <p>戻る</p>
     <% end %>
   </div>
-  <h1>新規募集</h1>
-  <%= form_with model: @recruitment, url: "/recruitments" do |f| %>
+  <h1>新規案件</h1>
+  <%= form_with model: @recruitment, url: "/projects/#{params[:project_id]}/recruitments" do |f| %>
     <div class="form">
       <div class="form-item">
-        <h2>募集の名前</h2>
+        <h2>案件の名前</h2>
         <%= f.text_field :name, class: "textbox" %>
       </div>
       <div class="form-item">

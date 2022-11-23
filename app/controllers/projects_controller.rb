@@ -1,12 +1,13 @@
 class ProjectsController < ApplicationController
   #ログインしていないユーザーがアクセスできない
   before_action :authenticate_user!
+  #プロジェクトに所属していないとアクセスできない
+  before_action :project_member, only: [:show, :edit, :update, :destroy]
 
   def index
   end
 
   def show
-    @project = Project.kept.find_by(id: params[:id])
   end
 
   def new
@@ -29,11 +30,9 @@ class ProjectsController < ApplicationController
   end
 
   def edit
-    @project = Project.kept.find_by(id: params[:id])
   end
 
   def update
-    @project = Project.kept.find_by(id: params[:id])
     if @project.update(project_params)
       flash[:notice] = "変更を保存しました"
       redirect_to("/projects/#{@project.id}")
@@ -43,7 +42,6 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
-    @project = Project.find_by(id: params[:id])
     @project.discard
     redirect_to("/projects")
   end

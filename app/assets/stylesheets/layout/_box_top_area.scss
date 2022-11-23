@@ -1,0 +1,41 @@
+@charset "utf-8";
+@import "../function/mediaquery";
+@import "../setting/variable";
+
+.box-top-area {
+  align-items: center;
+  display: flex;
+  width: 100%;
+  &.top-space {
+    margin-top: 8px;
+  }
+  &.bottom-space {
+    margin-bottom: 16px;
+  }
+  &.from-right {
+    justify-content: right;
+  }
+  a {
+    font-size: 1.1rem;
+    margin-right: 16px;
+  }
+  .sort {
+    align-items: center;
+    display: flex;
+    i {
+      font-size: 1.1rem;
+      margin-right: 4px;
+    }
+    select {
+    background-color: $base-color-10;
+    border: none;
+      border-radius: 4px;
+      box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2) inset;
+      font-size: 1rem;
+      padding: 4px;
+    }
+  }
+  &:last-child {
+    margin-right: 0;
+  }
+}

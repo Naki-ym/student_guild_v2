@@ -47,6 +47,13 @@ class User < ApplicationRecord
     return self.following_user
   end
 
+  def project_member?(project)
+    @project = Affiliation.find_by(project_id: project.id, user_id: self.id)
+    if @affiliation.is_master
+      return true
+    end
+  end
+
   def project_master?(project)
     @affiliation = Affiliation.find_by(project_id: project.id, user_id: self.id)
     if @affiliation.is_master

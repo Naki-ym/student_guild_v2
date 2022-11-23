@@ -6,8 +6,8 @@
 <nav class="ham">
   <ul class="ham-menu">
     <li class="ham-menu-li"><%= link_to("< プロジェクト一覧", "/projects") %></li>
-    <li class="ham-menu-li"><%= link_to("ホーム", "/projects/#{params[:project_id]}") %></li>
-    <li class="ham-menu-li"><%= link_to("掲示板", "#") %></li>
+    <li class="ham-menu-li"><%= link_to("トップ", "/projects/#{params[:project_id]}") %></li>
+    <li class="ham-menu-li"><%= link_to("掲示板", "/projects/#{params[:id]}/project_posts") %></li>
     <li class="ham-menu-li"><%= link_to("案件", "/projects/#{params[:project_id]}/recruitments") %></li>
   </ul>
 </nav>
@@ -18,15 +18,20 @@
       <div class="menu">
         <ul class="menu-list">
           <li><%= link_to("< プロジェクト一覧", "/projects") %></li>
-          <li><%= link_to("ホーム", "/projects/#{params[:project_id]}") %></li>
-          <li><%= link_to("掲示板", "#") %></li>
+          <li><%= link_to("トップ", "/projects/#{params[:project_id]}") %></li>
+          <li><%= link_to("掲示板", "/projects/#{params[:project_id]}/project_posts") %></li>
           <li><%= link_to("案件", "/projects/#{params[:project_id]}/recruitments") %></li>
         </ul>
       </div>
     </div>
   </section>
   <section class="two-col-right">
-    <h1>案件一覧</h1>
+    <div class="box-top-area bottom-space">
+      <%= link_to("/projects/#{params[:project_id]}/recruitments/new", class: "text-btn") do %>
+        <i class="fas fa-plus"></i>
+        <p>追加</p>
+      <% end %>
+    </div>
     <div class="recruitments-bord">
       <% @recruitments.each do |recruitment| %>
         <%= link_to("/projects/#{params[:project_id]}/recruitments/#{recruitment.id}", class: "recruitment-box") do %>
@@ -40,7 +45,7 @@
               <%= image_tag recruitment.user.icon.url, class:"small-usericon" %>
             <% else %>
               <%= image_tag "icon.png", class: "small-usericon" %>
-            <% end %>
+            <% end %> 
             <div class="details">
               <h2><%= recruitment.name %></h2>
               <p class="target"><span class="fas fa-search"></span><%= recruitment.target %></p>
