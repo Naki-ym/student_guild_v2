@@ -6,7 +6,7 @@ class RecruitmentsController < ApplicationController
 
   def index
     @categories = TagCategory.kept.order(created_at: :asc)
-    my_project_recruitments = nil
+    my_project_recruitments = []
     current_user.projects.each do |pj|
       if my_project_recruitments
         my_project_recruitments += pj.recruitments
