@@ -5,10 +5,10 @@
 </span>
 <nav class="ham">
   <ul class="ham-menu">
-    <li class="ham-menu-li"><%= link_to("トップ", "/projects/#{params[:id]}") %></li>
     <li class="ham-menu-li"><%= link_to("掲示板", "/projects/#{params[:id]}/project_posts") %></li>
     <li class="ham-menu-li"><%= link_to("案件", "/projects/#{params[:id]}/recruitments") %></li>
-    <li class="ham-menu-li"><%= link_to("プロジェクト一覧にもどる", "/projects") %></li>
+    <li class="ham-menu-li"><%= link_to("情報", "/projects/#{params[:id]}") %></li>
+    <li class="ham-menu-li"><%= link_to("＜ プロジェクト一覧", "/projects") %></li>
   </ul>
 </nav>
 
@@ -17,10 +17,10 @@
     <div class="fixed">
       <div class="menu">
         <ul class="menu-list">
-          <li><%= link_to("トップ", "/projects/#{params[:id]}") %></li>
           <li><%= link_to("掲示板", "/projects/#{params[:id]}/project_posts") %></li>
           <li><%= link_to("案件", "/projects/#{params[:id]}/recruitments") %></li>
-          <li><%= link_to("プロジェクト一覧にもどる", "/projects") %></li>
+          <li><%= link_to("情報", "/projects/#{params[:id]}") %></li>
+          <li><%= link_to("＜ プロジェクト一覧", "/projects") %></li>
         </ul>
       </div>
     </div>
@@ -34,7 +34,7 @@
         <li class="li-tile"><%= link_to("プロジェクト情報編集", "/projects/#{params[:id]}/edit") %></li>
         <li class="li-tile">
           <%= link_to("プロジェクト削除", "/projects/#{params[:id]}",
-            data: { confirm: "本当にアカウントを削除しますか？" }, method: :delete) %>
+            data: { confirm: "本当にプロジェクトを削除しますか？" }, method: :delete) %>
         </li>
       <% end %>
     </ul>
