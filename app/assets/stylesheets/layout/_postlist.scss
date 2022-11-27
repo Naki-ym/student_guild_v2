@@ -40,11 +40,13 @@
         display: flex;
         justify-content: flex-end;
         user-select: none;
+        height: fit-content;
         .fav-icon {
+          align-items: center;
           display: flex;
           font-size: 1.5rem;
           transition: .3s;
-          padding: 0 12px;
+          padding-left: 20px;
           &:hover {
             opacity: .5;
           }
