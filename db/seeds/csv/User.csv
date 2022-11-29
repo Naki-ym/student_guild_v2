@@ -1,0 +1,11 @@
+﻿id,name,email,password,admin,icon
+1,Naoki,naoki@mail.com,naokidayo,TRUE,image.png
+2,Tatsuya,tatsuya@mail.com,tatsuyadayo,FALSE,image.png
+3,Soma,soma@mail.com,somadayo,FALSE,image.png
+4,Masato,masato@mail.com,masatodayo,FALSE,image.png
+5,Shinji,shinji@mail.com,shinjidayo,FALSE,image.png
+6,Kyohei,kyohei@mail.com,kyoheidayo,FALSE,image.png
+7,Kei,kei@mail.com,keidayo,FALSE,image.png
+8,Hitomi,hitomi@mail.com,hitomidayo,FALSE,image.png
+9,Ayumu,ayumu@mail.com,ayumudayo,FALSE,image.png
+10,Ren,ren@mail.com,rendayo,FALSE,image.png
