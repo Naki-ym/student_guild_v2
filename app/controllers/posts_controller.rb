@@ -25,8 +25,7 @@ class PostsController < ApplicationController
       flash[:notice] = "投稿しました"
       redirect_to("/posts")
     else
-      @posts = Post.kept.where(user_id: @followings_id).order(created_at: :desc)
-      render("posts/index")
+      redirect_to("/posts")
     end
   end
 
