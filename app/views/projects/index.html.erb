@@ -1,6 +1,8 @@
 <div class="wrapper">
   <ul class="list">
     <li class="li-tile"><%= link_to("案件を探す", "/recruitments") %></li>
+  </ul>
+  <ul class="list">
     <% current_user.projects.kept.each do |project| %>
       <li class="li-tile"><%= link_to(project.name, "/projects/#{project.id}") %></li>
     <% end %>

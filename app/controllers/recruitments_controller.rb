@@ -91,7 +91,7 @@ class RecruitmentsController < ApplicationController
     @recruitment.image_cache = recruitment_params["image_cache"]
     if params[:tag] != "---" and @recruitment.save
       flash[:notice] = "変更を保存しました"
-      redirect_to("/recruitments/#{@recruitment.id}/")
+      redirect_to("/projects/#{@recruitment.project_id}/recruitments/#{@recruitment.id}/")
     else
       @categories = TagCategory.kept.order(created_at: :asc)
       @tags       = Tag.kept.all.order(created_at: :asc)
