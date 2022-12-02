@@ -38,7 +38,7 @@
     <%= simple_format(@recruitment.detail, class: "detail") %>
     <div class="btns">
       <% if @recruitment.user_id == current_user.id %>
-        <%= link_to "届いた応募を見る", "/recruitments/#{@recruitment.id}/entries", {method: :get, class: "btn"} %>
+        <%= link_to "届いた応募を見る", "/projects/#{params[:project_id]}/recruitments/#{@recruitment.id}/entries", {method: :get, class: "btn"} %>
         <% if @recruitment.is_published == true %>
           <%= link_to "非公開にする", "/recruitments/#{@recruitment.id}/unpublish", {class: "btn"} %>
         <% else %>

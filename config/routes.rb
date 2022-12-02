@@ -27,6 +27,7 @@ Rails.application.routes.draw do
     end
     resources :project_posts, only: [:index, :create, :new, :edit, :update, :destroy]
     resources :recruitments, only: [:create, :new] do
+      resources :entries, only: [:index]
       root "recruitments#project_recruitments"
     end
     get "recruitments/:id" => "recruitments#show", as: "show"
@@ -40,7 +41,7 @@ Rails.application.routes.draw do
       post  :publish
       post  :unpublish
     end
-    resources :entries, only: [:index, :create, :new ]
+    resources :entries, only: [:create, :new ]
   end
 
   resources :tags, only: [:index, :create, :new, :edit, :update, :destroy] do
